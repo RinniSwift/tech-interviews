@@ -1,4 +1,5 @@
 
+import Foundation
 
 /* Nov.5.18
  
@@ -7,6 +8,7 @@
  
 */
 
+// 1)
 let str1 = ["a", "b", "c", "f", "h", "w", "g", "k"]
 let str2 = ["c", "f", "d", "h", "w", "g", "k"]
 
@@ -36,3 +38,29 @@ print(findLongestConsecutives(str1: str1, str2: str2))
 // n is the for loop , m is the nested for loop, and z is the result array.
 
 
+// 2)
+
+
+/* Nov.12.18
+ 
+    Question 3) given an array of Int, return the largest product of 3 integers
+    Question 4) given an array of duplicate Int, return the unique number
+ 
+ */
+
+// 3)
+let list = [3, 7, 1, 2, 13, 52, 99, 54, 20, -1000, -5]
+func largestProduct(listInt: [Int]) -> Int {
+    let sortedList = listInt.sorted()
+    let lastThreeNum = sortedList.suffix(3)
+    let firstProduct = lastThreeNum.reduce(1, *)
+    let secondProduct = sortedList[0] * sortedList[1] * sortedList.last!
+    
+    if firstProduct >= secondProduct {
+        return firstProduct
+    } else {
+        return secondProduct
+    }
+    
+}
+print(largestProduct(listInt: list))
