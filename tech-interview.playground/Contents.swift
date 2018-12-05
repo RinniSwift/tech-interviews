@@ -53,6 +53,7 @@ let list = [3, 7, 1, 2, 13, 52, 99, 54, 20, -1000, -5]
 func largestProduct(listInt: [Int]) -> Int {
     let sortedList = listInt.sorted()
     let lastThreeNum = sortedList.suffix(3)
+    
     let firstProduct = lastThreeNum.reduce(1, *)
     let secondProduct = sortedList[0] * sortedList[1] * sortedList.last!
     
@@ -64,3 +65,14 @@ func largestProduct(listInt: [Int]) -> Int {
     
 }
 print(largestProduct(listInt: list))
+
+// 4)
+let duplicates = [3, 4, 77, 3, 77, 5, 6, 6, 4]
+func returnUnique(numbers: [Int]) -> Set<Int> {
+    var uniqueNums = Set<Int>()
+    for i in numbers {
+        uniqueNums.insert(i)
+    }
+    return uniqueNums
+}
+print(returnUnique(numbers: duplicates))
