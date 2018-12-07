@@ -68,11 +68,23 @@ print(largestProduct(listInt: list))
 
 // 4)
 let duplicates = [3, 4, 77, 3, 77, 5, 6, 6, 4]
-func returnUnique(numbers: [Int]) -> Set<Int> {
-    var uniqueNums = Set<Int>()
+func returnUnique(numbers: [Int]) -> [Int] {
+    var uniqueNumbers = [Int]()
+    var count = 0
+    var frequencyDict = [Int:Int]()
     for i in numbers {
-        uniqueNums.insert(i)
+        if(frequencyDict.keys.contains(i)){
+            frequencyDict[i]! += 1
+        }
+        else{
+            frequencyDict[i] = 1
+        }
     }
-    return uniqueNums
+    for j in frequencyDict {
+        if j.value == 1 {
+            uniqueNumbers.append(j.key)
+        }
+    }
+    return uniqueNumbers
 }
 print(returnUnique(numbers: duplicates))
