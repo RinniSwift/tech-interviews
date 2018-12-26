@@ -271,6 +271,8 @@ print(numbers.map { (value) -> Int in
 
 /*
     13) have a starting number and jump the amount of steps given with a given step                                     * complete
+    14) create a factorial recurssive function                                                                          * complete
+    15) check if all characters in a word are unique                                                                    * complete
  */
 
 // 13)
@@ -289,3 +291,84 @@ func makeIterator(start: Int, iterate: Int, steps: Int) -> [Int] {
 }
 
 makeIterator(start: 1, iterate: 2, steps: 10)
+
+// 14)
+func factorialRecurssive(times: Int) -> Int {
+    if times == 0 || times == 1 {
+        return 1
+    }
+    
+    else if times > 1 {
+        return times * factorialRecurssive(times: (times - 1))
+    }
+    return 0
+}
+factorialRecurssive(times: 10)
+
+
+// 15)
+func unqiueWord(word: String) -> Bool {
+    var seenChar = Set<String>()
+    var unique = 0
+    
+    for i in word.lowercased() {
+        if seenChar.contains(String(i)) {
+            return false
+        } else {
+            seenChar.insert(String(i))
+            print(seenChar)
+            unique += 1
+        }
+    }
+    
+    if unique == word.count {
+        return true
+    } else {
+        return false
+    }
+}
+unqiueWord(word: "concious")
+
+/*
+        USING CLOSURES
+ 
+    16) use filter to return all multiples of 3                         * complete *
+    17) use reduce to get the largest number                            * complete
+    18) use reduce to join all strings together                         * complete
+ 
+ */
+
+// 16)
+func multiplesOfThree(numbers: [Int]) -> [Int] {
+    
+    /*
+    return numbers.filter { (num) -> Bool in
+        return num % 3 == 0
+    }
+     or:
+    */
+    
+    return numbers.filter { $0 % 3 == 0 }
+    
+}
+multiplesOfThree(numbers: [3, 4, 5, 6, 8, 9, 33])
+
+// 17)
+func largestNumber(numbers: [Int]) -> Int {
+    return numbers.reduce(0, {
+        if $0 > $1 {
+            return $0
+        } else {
+            return $1
+        }
+    })
+}
+
+largestNumber(numbers: [3, 5, 7, 9, 100])
+
+// 18)
+func joinStrings(strings: [String]) -> String {
+    return strings.reduce("", { $0 + " " +  $1 })
+}
+joinStrings(strings: ["happy", "me", "in", "a", "garden"])
+
