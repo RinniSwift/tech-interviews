@@ -162,5 +162,130 @@ arrayBinarySearch(array: [2, 7, 9, 10, 15, 22, 33, 44, 55], value: 33)
     question 7) find the missing number in a given array of 1...100
     question 8) find the smallest and largest number in an unsorted array
     question 9) calculate the number of times an integer has been duplicated.
+    question 10) calculate the number of times a number has been repeated in an array                                   * complete
  
  */
+
+
+
+// 10)
+func numberOfTimes(numbers: [Int]) -> [Int: Int] {
+
+    var countsDict = [Int: Int]()
+    var count = 1
+    for num in numbers {
+        if countsDict[num] != nil {
+            count += 1
+            countsDict[num] = count
+        } else {
+            countsDict[num] = 1
+        }
+        
+    }
+    return countsDict
+}
+print(numberOfTimes(numbers: [2, 2, 4, 6, 1]))
+
+
+/*
+ 
+    question 11) create a Queue with stacks                                                                             * not complete
+    question 12) return numbers under a certain condition using a closure                                               * complete
+
+ */
+
+// 11)
+// one stack for inputting, one stack for outputting.
+// [4, 3, 2, 1]
+
+// \    1    /   \    4    /
+//  \   2   /     \   3   /
+//   \  3  /       \  2  /
+//    \ 4 /         \ 1 /    -> deque
+
+// this will create a first in first out
+
+class Queue {
+    var inputStack = Stack()
+    var outputStack = Stack()
+    
+    func push(_ number: Int) {
+        inputStack.enque(number)
+    }
+    
+    func pop() {
+        outputStack.enque(inputStack.dequeue()!)
+        outputStack.dequeue()
+    }
+    
+    func isEmpty() -> Bool {
+        return inputStack.array.isEmpty && outputStack.array.isEmpty
+    }
+}
+
+class Stack {
+    var array = [Int]()
+    func enque(_ num: Int) {
+        array.append(num)
+    }
+    func dequeue() -> Int? {
+        return array.popLast()
+    }
+}
+
+var queue = Queue()
+queue.push(4)
+queue.push(5)
+queue.push(6)
+queue.isEmpty()
+print(queue.pop())
+print(queue.inputStack.array)
+print(queue.outputStack.array)
+
+
+// 12)
+func filterWithPredicateClosure(condition: (Int) -> Bool, numbers: [Int]) -> [Int] {
+    var filteredNums = [Int]()
+    for num in numbers {
+        if condition(num) {
+            filteredNums.append(num)
+        }
+    }
+    return filteredNums
+}
+
+print(filterWithPredicateClosure(condition: { (num) -> Bool in
+    return num < 6
+}, numbers: [1, 3, 5, 7, 9, 10]))
+
+
+
+let numbers = [3, 5, 8, 33, 22]
+print(numbers.max(by: { (a, b) -> Bool in
+    a < b
+}))
+numbers.map { $0 * $0 }
+print(numbers.map { (value) -> Int in
+    value * value
+})
+
+/*
+    13) have a starting number and jump the amount of steps given with a given step                                     * complete
+ */
+
+// 13)
+func makeIterator(start: Int, iterate: Int, steps: Int) -> [Int] {
+    var numbers = [Int]()
+    var current = start
+    numbers.append(start)
+    
+    for i in 0...steps {
+        current += iterate
+        numbers.append(current)
+        
+    }
+    
+    return numbers
+}
+
+makeIterator(start: 1, iterate: 2, steps: 10)
