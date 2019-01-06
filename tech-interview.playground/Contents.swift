@@ -372,3 +372,29 @@ func joinStrings(strings: [String]) -> String {
 }
 joinStrings(strings: ["happy", "me", "in", "a", "garden"])
 
+
+/*
+ 
+ 19) return the pairs of Ints that add up to k                          * compelete
+ 
+ */
+
+
+// 19)
+func pairsThatAddUp(nums: [Int], k: Int) -> [Int: Int] {
+    
+    var pairs = [Int: Int]()
+    var numbers = Set(nums)
+    
+    for i in numbers {
+        let complement = k - i
+        if numbers.contains(complement) {
+            pairs[i] = complement
+            numbers.remove(i)
+            numbers.remove(complement)
+        }
+    }
+    return pairs
+    
+}
+print(pairsThatAddUp(nums: [3, 4, 5, 6, 1, 7, 0], k: 7))
