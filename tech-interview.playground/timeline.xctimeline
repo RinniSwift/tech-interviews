@@ -3,7 +3,12 @@
    version = "3.0">
    <TimelineItems>
       <LoggerValueHistoryTimelineItem
-         documentLocation = "file:///Users/rinniswift/dev/tech-interview/tech-interview.playground#CharacterRangeLen=5491&amp;CharacterRangeLoc=4394&amp;EndingColumnNumber=0&amp;EndingLineNumber=400&amp;StartingColumnNumber=0&amp;StartingLineNumber=156&amp;Timestamp=568425580.10439"
+         documentLocation = "file:///Users/rinniswift/dev/tech-interview/tech-interview.playground#CharacterRangeLen=6782&amp;CharacterRangeLoc=4142&amp;EndingColumnNumber=0&amp;EndingLineNumber=448&amp;StartingColumnNumber=0&amp;StartingLineNumber=149&amp;Timestamp=568502266.373435"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "file:///Users/rinniswift/dev/tech-interview/tech-interview.playground#CharacterRangeLen=59&amp;CharacterRangeLoc=9927&amp;EndingColumnNumber=0&amp;EndingLineNumber=397&amp;StartingColumnNumber=1&amp;StartingLineNumber=396&amp;Timestamp=568502266.373593"
          selectedRepresentationIndex = "0"
          shouldTrackSuperviewWidth = "NO">
       </LoggerValueHistoryTimelineItem>

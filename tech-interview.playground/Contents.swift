@@ -100,35 +100,28 @@ print(returnUnique(numbers: duplicates))
 
 /*
  
-    question 5) given an array of Ints and a value, find the two pairs that add up to that value.                       * not complete
+    question 5) given an array of Ints and a value, find the two pairs that add up to that value.                       * complete
     question 6) create a binary search on an array with a given value                                                   * complete
  
  */
 
 // 5)
-// number [4, 5, 9, 11, 2, 23, 44, 8]
-// sorted [2, 4, 5, 8, 9, 11, 23, 44]
-
-func returnPairsOfTheSum(numbers: [Int], value: Int) -> [Int] {
-    var possibleNumbers = numbers.sorted()
-    var newArray = [Int]()
-    for num in possibleNumbers {
-        if num <= value {
-            var first = num
-            var second = value - num
-            if second == first {
-                newArray.append(first)
-                newArray.append(second)
-            }
-        } else {
-            // number is greater than value
-            break
+func pairs(nums: [Int], number: Int) -> [Int: Int] {
+    var pairs = [Int: Int]()
+    var numbers = Set(nums)
+    
+    for i in numbers {
+        let complement = number - i
+        numbers.remove(i)
+        if numbers.contains(complement) {
+            pairs[i] = complement
+            numbers.remove(complement)
         }
     }
-    return newArray
+    return pairs
 }
+pairs(nums: [4, 5, 9, 11, 2, 23, 44, 8, 1], number: 10)
 
-print(returnPairsOfTheSum(numbers: [4, 5, 9, 11, 2, 23, 44, 8], value: 10))
 
 // 6)
 func arrayBinarySearch(array: [Int], value: Int) -> Bool {
@@ -159,10 +152,10 @@ arrayBinarySearch(array: [2, 7, 9, 10, 15, 22, 33, 44, 55], value: 33)
 
 /*
  
-    question 7) find the missing number in a given array of 1...100
-    question 8) find the smallest and largest number in an unsorted array
-    question 9) calculate the number of times an integer has been duplicated.
-    question 10) calculate the number of times a number has been repeated in an array                                   * complete
+    question 7) find the missing number in a given array of 1...100                         * not complete
+    question 8) find the smallest and largest number in an unsorted array                   * not complete
+    question 9) calculate the number of times an integer has been duplicated.               * not complete
+    question 10) calculate the number of times a number has been repeated in an array       * complete
  
  */
 
@@ -189,8 +182,8 @@ print(numberOfTimes(numbers: [2, 2, 4, 6, 1]))
 
 /*
  
-    question 11) create a Queue with stacks                                                                             * not complete
-    question 12) return numbers under a certain condition using a closure                                               * complete
+    question 11) create a Queue with stacks                                                  * not complete
+    question 12) return numbers under a certain condition using a closure                    * complete
 
  */
 
@@ -375,7 +368,11 @@ joinStrings(strings: ["happy", "me", "in", "a", "garden"])
 
 /*
  
- 19) return the pairs of Ints that add up to k                          * compelete
+ 19) return the pairs of Ints that add up to k                                          * compelete
+ 20) find all the different ways a character array can be permutated                    * not complete
+ 21) compress strings with the number of repeated character count aabcddde -> a2bcd3e   * complete
+ 22) check if string one is a subset of string two
+ 23) check if the first string is a rotation of the second string
  
  */
 
@@ -388,13 +385,64 @@ func pairsThatAddUp(nums: [Int], k: Int) -> [Int: Int] {
     
     for i in numbers {
         let complement = k - i
+        numbers.remove(i)
         if numbers.contains(complement) {
             pairs[i] = complement
-            numbers.remove(i)
             numbers.remove(complement)
         }
     }
     return pairs
     
 }
-print(pairsThatAddUp(nums: [3, 4, 5, 6, 1, 7, 0], k: 7))
+print(pairsThatAddUp(nums: [3, 4, 5, 6, 1, 7, 0, 2], k: 8))
+
+
+// 21)
+func compressString(string: String) -> String {
+    
+    var compressedString = ""
+    var count = 1
+    var prev = ""
+    
+    for i in string {
+        let curr = String(i)
+        if curr == prev {
+            count += 1
+        } else {
+            if count > 1 {
+                compressedString += String(count)
+            } else {
+                count = 1
+            }
+            compressedString += String(i)
+            count = 1
+        }
+        prev = String(i)
+    }
+    return compressedString
+    
+}
+compressString(string: "aabcddde")
+
+// 22)
+func isSubstring(stringOne: String, stringTwo: String) -> Bool {
+    var count = 0
+    for i in stringTwo {
+        if stringOne.contains(i) {
+            count += 1
+        }
+    }
+    
+    return false
+}
+isSubstring(stringOne: "hi", stringTwo: "pp")
+
+
+
+/*
+ 
+ extra credit: create a rubix cube game which should have all ones in a row and all zeros in a row
+ 
+ */
+
+
