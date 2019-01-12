@@ -42,9 +42,11 @@ func isSubstring(strOne: String, strTwo: String) -> Bool {
         } else {
             return false
         }
-    } else strOne.count == strTwo.count {
-        
+    } else if strOne.count == strTwo.count {
+        if strO.sorted() == strT.sorted() {
+            return false
+        }
     }
     return false
 }
-isSubstring(strOne: "sarin", strTwo: "rain")
+isSubstring(strOne: "sarin", strTwo: "naris")
