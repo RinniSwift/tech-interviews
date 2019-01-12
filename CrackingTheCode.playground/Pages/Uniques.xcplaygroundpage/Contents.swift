@@ -1,6 +1,6 @@
 /*
  
- Given a string, check if it contains all unique characters
+ Given a string, check if all the characters in the string are unique
  
  */
 
