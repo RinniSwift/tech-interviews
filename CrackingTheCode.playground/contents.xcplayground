@@ -4,5 +4,7 @@
         <page name='Uniques'/>
         <page name='Permutation'/>
         <page name='Subsetting'/>
+        <page name='Pairs'/>
+        <page name='ReplaceString'/>
     </pages>
 </playground>
