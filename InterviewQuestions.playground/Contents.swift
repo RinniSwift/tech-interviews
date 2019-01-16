@@ -24,9 +24,6 @@
  
  */
 
-
-
-
 func returnNoParAndOnePar(arr: [[Int]]) -> ([Int], [Int]) {
     
     var parDict = [Int: Int]()
@@ -69,3 +66,77 @@ func returnNoParAndOnePar(arr: [[Int]]) -> ([Int], [Int]) {
     return (noParArr, oneParArr)
 }
 print(returnNoParAndOnePar(arr: [[1,2], [2, 5], [2, 6], [3,8], [9, 1]]))
+
+
+/*
+ 
+ Given an array of Integeres, return true if there are 3 items in the array that add to the value k
+
+ 
+ */
+
+func checkIfThereAreNumbers(array: [Int], k: Int) -> Bool {
+    for i in 0...array.count {
+        for j in 1...array.count {
+            let difference = k - (array[i] + array[j])
+            let differenceT = (array[i] + array[j]) - k
+            if array.contains(difference) || array.contains(differenceT) {
+                return true
+            } else {
+                return false
+            }
+        }
+    }
+    return false
+}
+checkIfThereAreNumbers(array: [2, 3, 4, 6, 5, 1, 3, 2], k: 7)
+
+
+/*
+ 
+ given an array of characters in order which form a three word sentence, reverse the sentence
+ 
+ inputArray = [ 'p', 'e', 'r', 'f', 'e', 'c', 't', ' ',
+                'm', 'a', 'k', 'e', 's', ' ',
+                'p', 'r', 'a', 'c', 't', 'i', 'c', 'e' ]
+ 
+ -->
+ 
+ reurnArray = [ 'p', 'r', 'a', 'c', 't', 'i', 'c', 'e', ' ',
+                'm', 'a', 'k', 'e', 's', ' ',
+                'p', 'e', 'r', 'f', 'e', 'c', 't' ]
+ 
+ 
+ reduce all the letters before the space and then swap them and then split them out again
+ 
+ */
+
+func reverseWords(arr: [Character]) {
+    let joinedString = String(arr)
+    var splitWords = joinedString.split(separator: " ")
+    
+    var reversedArray = [String]()
+    reversedArray.append(String(splitWords[2]))
+    reversedArray.append(String(splitWords[1]))
+    reversedArray.append(String(splitWords[0]))
+    print(reversedArray)
+    
+    let joinedReversedArr = reversedArray.joined(separator: " ")
+    var resultArray = [Character]()
+    for item in joinedReversedArr {
+        if item == " " {
+            resultArray.append(" ")
+        } else {
+            resultArray.append(item)
+        }
+    }
+    print(resultArray)
+    
+}
+reverseWords(arr: ["p", "r", "a", "c", "t", "i", "c", "e", " ",
+                    "m", "a", "k", "e", "s", " ",
+                    "p", "e", "r", "f", "e", "c", "t"])
+
+
+
+
