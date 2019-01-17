@@ -107,36 +107,55 @@ checkIfThereAreNumbers(array: [2, 3, 4, 6, 5, 1, 3, 2], k: 7)
                 'p', 'e', 'r', 'f', 'e', 'c', 't' ]
  
  
- reduce all the letters before the space and then swap them and then split them out again
+ join all the characters together, split them from the spaces, get the individual words, reverse them(rearanging the order), join them in a string, split them and get the individual characters
  
  */
 
-func reverseWords(arr: [Character]) {
-    let joinedString = String(arr)
-    var splitWords = joinedString.split(separator: " ")
+func reverseWordsArray(arr: [Character]) -> [Character] {
+    var splitWords = String(arr).split(separator: " ")              // the individual words stored in an array
     
     var reversedArray = [String]()
     reversedArray.append(String(splitWords[2]))
     reversedArray.append(String(splitWords[1]))
-    reversedArray.append(String(splitWords[0]))
-    print(reversedArray)
+    reversedArray.append(String(splitWords[0]))                     // append the rearanged words in an array
     
-    let joinedReversedArr = reversedArray.joined(separator: " ")
+    let joinedReversedArr = reversedArray.joined(separator: " ")    // join the words into a string seperated by a space
     var resultArray = [Character]()
     for item in joinedReversedArr {
-        if item == " " {
-            resultArray.append(" ")
-        } else {
-            resultArray.append(item)
-        }
+        resultArray.append(item)                                    // append all the characters in the string into the array to keep the same format
     }
-    print(resultArray)
+    return resultArray
     
 }
-reverseWords(arr: ["p", "r", "a", "c", "t", "i", "c", "e", " ",
+reverseWordsArray(arr: ["p", "r", "a", "c", "t", "i", "c", "e", " ",
                     "m", "a", "k", "e", "s", " ",
                     "p", "e", "r", "f", "e", "c", "t"])
 
 
+
+func reverseWordString(arr: [Character]) -> String {
+    // we want to put al the words into an array.
+    // then rearange the indexes
+    // then join them into a string
+    // then split al characters
+    
+    let individualWord = String(arr).split(separator: " ")          // return array of individual words
+    
+    var rearangedArr = [String]()                                   // rearanged array of words
+    rearangedArr.append(String(individualWord[2]))
+    rearangedArr.append(String(individualWord[1]))
+    rearangedArr.append(String(individualWord[0]))
+    
+    var joined = ""                                                 // append the words to the string
+    for word in rearangedArr {
+        joined += word
+        joined += " "
+    }
+    return joined
+    
+}
+reverseWordString(arr: ["p", "r", "a", "c", "t", "i", "c", "e", " ",
+                  "m", "a", "k", "e", "s", " ",
+                  "p", "e", "r", "f", "e", "c", "t"])
 
 
