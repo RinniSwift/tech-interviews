@@ -6,5 +6,7 @@
         <page name='Subsetting'/>
         <page name='Pairs'/>
         <page name='ReplaceString'/>
+        <page name='Palindromes'/>
+        <page name='PalindromePerm'/>
     </pages>
 </playground>
