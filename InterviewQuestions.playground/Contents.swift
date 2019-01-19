@@ -159,3 +159,18 @@ reverseWordString(arr: ["p", "r", "a", "c", "t", "i", "c", "e", " ",
                   "p", "e", "r", "f", "e", "c", "t"])
 
 
+
+/*
+ 
+ find the diagonal difference in a matrix from left to right and right to left
+ e.g. [[1, 2, 3],
+       [4, 5, 6],
+       [7, 8, 9]]          the difference will be: |(1 + 5 + 9) - (3 + 5 + 7)|
+ 
+ */
+func count(matrix: [[Int]]) {
+    
+}
+count(matrix: [[1, 2, 3],
+               [4, 5, 6],
+               [7, 8, 9]])
