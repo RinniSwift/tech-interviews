@@ -8,6 +8,14 @@
  */
 func diagonalDifference(matrix: [[Int]]) {
     
+    let leftToRight = matrix.enumerated().reduce(0) {(result, arr) in
+        return result + arr.element[arr.offset]
+    }
+    let rightToLeft = matrix.reversed().enumerated().reduce(0) {(result, arr) in
+        return result + arr.element[arr.offset]
+    }
+    
+    print(abs(leftToRight - rightToLeft))
 }
 diagonalDifference(matrix: [[1, 2, 3],
                             [4, 5, 6],
@@ -25,6 +33,24 @@ diagonalDifference(matrix: [[1, 2, 3],
  */
 func ratiosOfNumbers(numbers: [Int]) {
     
+    var positives = 0
+    var negatives = 0
+    var zeros = 0
+    
+    for number in numbers {
+        if number > 0 {
+            positives += 1
+        } else if number < 0 {
+            negatives += 1
+        } else {
+            zeros += 1
+        }
+    }
+    
+    print(Double(positives) / Double(numbers.count))
+    print(Double(negatives) / Double(numbers.count))
+    print(Float(zeros) / Float(numbers.count))
+    
 }
 ratiosOfNumbers(numbers: [1, 1, 0, -1, -1])
 
@@ -40,8 +66,25 @@ ratiosOfNumbers(numbers: [1, 1, 0, -1, -1])
   #####
  ######
  
+ clean up the code!
+ 
  */
 func staircase(n: Int) {
+    var string = ""
+    
+    for i in 1...n {
+        let spaces = n - i
+        if spaces > 0 {
+            for _ in 1...(spaces) {
+                string += " "
+            }
+        }
+        while string.count != n {
+            string += "#"
+        }
+        print(string)
+        string = ""
+    }
     
 }
 staircase(n: 6)
@@ -53,7 +96,22 @@ staircase(n: 6)
     because there are only 2 candles whihc are the highest.
  */
 func birthdayCakeCandles(ar: [Int]) -> Int {
-    return 0
+    let maxNum = ar.sorted().reversed()[0]
+    var count = 0
+    
+    for num in ar {
+        if num == maxNum {
+            count += 1
+        }
+    }
+    return count
+    
+//    return ar.reduce(0, {(x, y) in
+//        if y == maxNum {
+//            count + 1
+//        }
+//        return y
+//    })
 }
 birthdayCakeCandles(ar: [3, 2, 1, 5, 9, 9, 9])
 
