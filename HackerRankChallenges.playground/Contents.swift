@@ -53,6 +53,26 @@ staircase(n: 6)
     because there are only 2 candles whihc are the highest.
  */
 func birthdayCakeCandles(ar: [Int]) -> Int {
-    
+    return 0
 }
 birthdayCakeCandles(ar: [3, 2, 1, 5, 9, 9, 9])
+
+
+/*
+ 
+ convert the time function where it returns a 12 hour clock to a 24 hour clock
+ e.g. string input: 07:05:45PM
+      string output: 19:05:45
+ 
+ */
+
+
+func timeConversion(s: String) -> String {
+    return ""
+}
+
+timeConversion(s: "07:05:45PM")
+timeConversion(s: "12:00:00AM")
+timeConversion(s: "12:00:00PM")
+timeConversion(s: "11:05:45PM")
+timeConversion(s: "01:00:00AM")
