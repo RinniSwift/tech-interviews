@@ -126,6 +126,25 @@ birthdayCakeCandles(ar: [3, 2, 1, 5, 9, 9, 9])
 
 
 func timeConversion(s: String) -> String {
+    var timeArray = [Character]()
+    for item in s {
+        timeArray.append(item)
+    }
+    
+    if timeArray[0] == "1" && timeArray[1] == "2" && timeArray.reversed()[1] == "A" {
+        return "00:\(timeArray[3])\(timeArray[4]):\(timeArray[6])\(timeArray[7])"
+    } else if timeArray[0] == "1" && timeArray[1] == "2" && timeArray.reversed()[1] == "P" {
+        return "\(timeArray[0])\(timeArray[1]):\(timeArray[3])\(timeArray[4]):\(timeArray[6])\(timeArray[7])"
+    } else if timeArray.reversed()[1] == "P" {
+        let hour = 12 + Int("\(timeArray[0])\(timeArray[1])")!
+        if hour > 9 {
+            return "\(hour):\(timeArray[3])\(timeArray[4]):\(timeArray[6])\(timeArray[7])"
+        } else if hour < 10 {
+            return "0\(hour):\(timeArray[3])\(timeArray[4]):\(timeArray[6])\(timeArray[7])"
+        }
+    } else if timeArray.reversed()[1] == "A" {
+        return "\(timeArray[0])\(timeArray[1]):\(timeArray[3])\(timeArray[4]):\(timeArray[6])\(timeArray[7])"
+    }
     return ""
 }
 
@@ -134,3 +153,99 @@ timeConversion(s: "12:00:00AM")
 timeConversion(s: "12:00:00PM")
 timeConversion(s: "11:05:45PM")
 timeConversion(s: "01:00:00AM")
+
+
+/*
+ find every possible substring of a string
+ */
+
+
+
+/*
+ 
+ determine the amount of matching socks there are in the sock pile (array).
+ ar = [1, 2, 1, 2, 1, 3, 2]
+ --> 2 since there are only 2 pairs of socks that have the same color.
+ 
+ */
+func returnSockPairs(socks: [Int]) -> Int {
+    // histogram approach
+    var hist = [Int: Int]()
+    var count = 0
+
+    for color in socks {
+        if hist[color] == nil {
+            hist[color] = 1
+        } else {
+            hist[color]! += 1
+        }
+    }
+
+    for item in hist {
+        let pairs = item.value / 2
+        count += pairs
+    }
+    return count
+}
+returnSockPairs(socks: [1, 2, 1, 2, 1, 3, 2])
+
+
+
+
+/*
+ 
+ given a string = UDDDUDUU
+ print the trail that the hiker will go through:
+ 
+ _/\      _
+    \    /
+     \/\/
+ 
+ */
+func trail(steps: Int, route: String) {
+    /*
+     put the line representing the U/D in an array, print the lines accordingly to their index by appending spaces infront of the string ubtil the number.
+     */
+    var arrOfLines = [Character]()
+    var string = ""
+    
+    for char in route {
+        if char == "U" {
+            arrOfLines.append("/")
+        } else if char == "D" {
+            arrOfLines.append(Character("\\"))
+        }
+    }
+    print(arrOfLines)
+    for (index, item) in arrOfLines.enumerated() {
+        if item == "/" {
+            if index == 0 {
+                print(string += "_/")
+                print(string)
+                string = ""
+                
+            } else {
+                for i in 0...index {
+                    string += " "
+                }
+                string += "/"
+                print(string)
+                string = ""
+            }
+        } else if item == "\\" {
+            if index == 0 {
+                print(string += "_\\")
+                string = ""
+            } else {
+                for i in 0...index {
+                    string += " "
+                }
+                string += "\\"
+                print(string)
+                string = ""
+            }
+        }
+    }
+ 
+}
+//trail(steps: 8, route: "UDDDUDUU")
