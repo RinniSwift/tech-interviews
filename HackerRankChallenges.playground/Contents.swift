@@ -230,4 +230,52 @@ func countingValleys(n: Int, s: String) -> Int {
     }
     return valleyCount
 }
-countingValleys(n: 8, s: "UDDDUDUUDDUUUUDD")
+//countingValleys(n: 8, s: "UDDDUDUUDDUUUUDD")
+
+
+/*
+ 
+ create a function to help Emma calculate the minimal jumps she has to take to get to the highest point possible:
+ given an array of number 0(representing clouds she can jump on) and 1(representing clouds she cant jump on)
+ clouds = [0, 1, 0, 0, 0, 1, 0]
+ returns 3
+ 
+ */
+func jumpingOnClouds(c: [Int]) -> Int {
+    
+    var currentInd = 0
+    var jumps = 0
+    
+    while currentInd < (c.count - 1) {
+        
+        if currentInd == c.count - 2 && c[currentInd] != 1 && c[currentInd + 1] == c[currentInd] {
+            jumps += 1
+            break
+        } else if currentInd == c.count - 2 && c[currentInd] == 1 && c[currentInd + 1] == 0 {
+            jumps += 1
+            break
+        } else if currentInd == c.count - 2 && c[currentInd] == 0 && c[currentInd + 1] != 0 {
+            break
+        } else if c[currentInd] == c[currentInd + 1] && c[currentInd] == c[currentInd + 2] {
+            jumps += 1
+            print("first")
+            currentInd = currentInd + 2
+            print(currentInd)
+        } else if c[currentInd] != c[currentInd + 1] {
+            jumps += 1
+            print("sec")
+            currentInd = currentInd + 2
+        } else if c[currentInd] == c[currentInd + 1] && c[currentInd] != c[currentInd + 2] {
+            jumps += 1
+            print("third")
+            currentInd = currentInd + 1
+        }
+        
+    }
+    return jumps
+}
+jumpingOnClouds(c: [0, 0, 1, 0, 1, 0, 0, 1, 0])
+
+
+
+
