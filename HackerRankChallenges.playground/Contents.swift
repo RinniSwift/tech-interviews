@@ -195,57 +195,39 @@ returnSockPairs(socks: [1, 2, 1, 2, 1, 3, 2])
 /*
  
  given a string = UDDDUDUU
- print the trail that the hiker will go through:
+ return the number of valleys the hiker will go through:
  
- _/\      _
-    \    /
-     \/\/
+ 
+                         /\
+ _/\      _         _   /  \_
+    \    /      \  /
+     \/\/        \/
+ 
+ return 2
  
  */
-func trail(steps: Int, route: String) {
-    /*
-     put the line representing the U/D in an array, print the lines accordingly to their index by appending spaces infront of the string ubtil the number.
-     */
-    var arrOfLines = [Character]()
-    var string = ""
+func countingValleys(n: Int, s: String) -> Int {
+    var seaLevel = 0
+    var currLevel = seaLevel
+    var valleyCount = 0
+    var currentlyInValley = false
     
-    for char in route {
-        if char == "U" {
-            arrOfLines.append("/")
-        } else if char == "D" {
-            arrOfLines.append(Character("\\"))
+    // check if it was a positive number that came down to level 0: this will not count as being a valleyr
+    
+    for route in s {
+        if route == "D" {
+            currLevel -= 1
+        } else if route == "U" {
+            currLevel += 1
+        }
+        
+        if currLevel == seaLevel && currentlyInValley == true {
+            currentlyInValley = false
+            valleyCount += 1
+        } else if currLevel < seaLevel && !currentlyInValley {
+            currentlyInValley = true
         }
     }
-    print(arrOfLines)
-    for (index, item) in arrOfLines.enumerated() {
-        if item == "/" {
-            if index == 0 {
-                print(string += "_/")
-                print(string)
-                string = ""
-                
-            } else {
-                for i in 0...index {
-                    string += " "
-                }
-                string += "/"
-                print(string)
-                string = ""
-            }
-        } else if item == "\\" {
-            if index == 0 {
-                print(string += "_\\")
-                string = ""
-            } else {
-                for i in 0...index {
-                    string += " "
-                }
-                string += "\\"
-                print(string)
-                string = ""
-            }
-        }
-    }
- 
+    return valleyCount
 }
-//trail(steps: 8, route: "UDDDUDUU")
+countingValleys(n: 8, s: "UDDDUDUUDDUUUUDD")
