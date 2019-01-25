@@ -1,4 +1,8 @@
 # Tech Interview
+
+## [HackerRank Challenges](https://github.com/RinniSwift/tech-interviews/tree/master/HackerRankChallenges.playground)
+check out some questions I went through along with solutions from HackerRank!
+
 ## [tech-interview.playground](https://github.com/RinniSwift/tech-interviews/blob/master/tech-interview.playground/Contents.swift)
 **solutions to the algorithm and data structure questions in tech-interview.playground**
 
