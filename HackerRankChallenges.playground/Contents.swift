@@ -157,6 +157,11 @@ timeConversion(s: "01:00:00AM")
 
 /*
  find every possible substring of a string
+ 
+             ********************
+             *** not complete ***
+             ********************
+ 
  */
 
 
@@ -239,6 +244,11 @@ func countingValleys(n: Int, s: String) -> Int {
  given an array of number 0(representing clouds she can jump on) and 1(representing clouds she cant jump on)
  clouds = [0, 1, 0, 0, 0, 1, 0]
  returns 3
+ 
+             ********************
+             *** not complete ***
+             ********************
+ 
  
  */
 func jumpingOnClouds(c: [Int]) -> Int {
@@ -350,6 +360,10 @@ rotateArray(arr: [1, 2, 3, 4, 5], n: 4)
  
  given an array of switched numbers, count the times the numbers have to be swapped in ordr to make the numbers be sorted again.
  
+        ********************
+        *** not complete ***
+        ********************
+ 
  */
 
 func minimumSwaps(arr: [Int]) -> Int {
@@ -362,7 +376,7 @@ func minimumSwaps(arr: [Int]) -> Int {
         }
     }
     
-    if wrongIndCount == 0 || wrongIndCount == 1{
+    if wrongIndCount == 0 || wrongIndCount == 1 {
         return wrongIndCount
     } else if wrongIndCount > 1 {
         return wrongIndCount - 1
