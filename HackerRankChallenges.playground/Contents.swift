@@ -384,3 +384,47 @@ func minimumSwaps(arr: [Int]) -> Int {
     return wrongIndCount
 }
 minimumSwaps(arr: [2, 1, 3, 5, 4])
+
+
+
+/*
+ 
+ checkMagazine would check if we can cut parts of the magazine to form our note.
+ Each word will be stored in an array.
+ print 'Yes' if note can be formed from the magazine, if not, print 'No'
+ 
+ */
+
+func checkMagazine(magazine: [String], note: [String]) -> Void {
+    
+//    let magazineArr = magazine[0].split(separator: " ")
+    var magazineWordCount = [String: Int]()
+    var count = 0
+    
+    for word in magazine {
+        if magazineWordCount[String(word)] == nil {
+            magazineWordCount[String(word)] = 1
+        } else {
+            magazineWordCount[String(word)]! += 1
+        }
+    }
+    
+    for word in note {
+        if magazineWordCount[String(word)] == nil {
+            continue
+        }
+        if magazineWordCount[String(word)]! >= 1 {
+            count += 1
+            magazineWordCount[String(word)]! -= 1
+        }
+    }
+    if count == note.count {
+        print("Yes")
+    } else {
+        print("No")
+    }
+    
+}
+checkMagazine(magazine: ["ive", "got", "a", "lovely", "bunch", "of", "coconuts"], note: ["ive", "got", "coconuts"])
+
+
