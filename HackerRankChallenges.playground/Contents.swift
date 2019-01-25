@@ -277,5 +277,96 @@ func jumpingOnClouds(c: [Int]) -> Int {
 jumpingOnClouds(c: [0, 0, 1, 0, 1, 0, 0, 1, 0])
 
 
+/*
+ 
+ given a string and a number, repeat the string count to that amount of numbers and count the charcter a in the string
+ 
+ count the original 'a's in the original string, divide it by the original string count. get that value to times by the count of the next item.
+ 
+ */
 
 
+func repeatedString(letters: String, numberOfLetters: Int) -> Int {
+    
+    // (numberOfLetters / letters.count) % 2 == 0, then we calculate the number
+    // of 'a's in the letters and times it by the division.
+    
+    var totalACount = 0
+    
+    if (numberOfLetters % letters.count) == 0 {
+        var aCount = 0
+        for char in letters {
+            if char == "a" {
+                aCount += 1
+            }
+        }
+        totalACount = aCount * (numberOfLetters / letters.count)
+        return totalACount
+    } else {
+        var appendString = ""
+        while appendString.count != numberOfLetters {
+            for char in letters {
+                if appendString.count != numberOfLetters {
+                    appendString += String(char)
+                }
+            }
+        }
+        for a in appendString {
+            if a == "a" {
+                totalACount += 1
+            }
+        }
+        return totalACount
+    }
+    
+    return totalACount
+    
+}
+repeatedString(letters: "abcd", numberOfLetters: 10)
+
+
+
+/*
+ 
+ given an array of numbers and a number indicating the amount of times the array rotates to the left, return the array after the n times of rotates
+ e.g.
+ arr: [1, 2, 3, 4, 5] n: 3       --> [4, 5, 1, 2, 3]
+ 
+ */
+
+func rotateArray(arr: [Int], n: Int) -> [Int] {
+    if arr.count == n {
+        return arr
+    } else {
+        let newArray = arr[n...] + arr[0...(n - 1)]
+        return Array(newArray)
+    }
+}
+rotateArray(arr: [1, 2, 3, 4, 5], n: 4)
+
+
+
+/*
+ 
+ given an array of switched numbers, count the times the numbers have to be swapped in ordr to make the numbers be sorted again.
+ 
+ */
+
+func minimumSwaps(arr: [Int]) -> Int {
+    
+    var wrongIndCount = 0
+    
+    for (ind, item) in arr.enumerated() {
+        if item != (ind + 1) {
+            wrongIndCount += 1
+        }
+    }
+    
+    if wrongIndCount == 0 || wrongIndCount == 1{
+        return wrongIndCount
+    } else if wrongIndCount > 1 {
+        return wrongIndCount - 1
+    }
+    return wrongIndCount
+}
+minimumSwaps(arr: [2, 1, 3, 5, 4])
