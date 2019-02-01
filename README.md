@@ -3,12 +3,13 @@
 ## [Tech-Interview-New.playground](https://github.com/RinniSwift/tech-interviews/blob/master/Tech-Interview-New.playground/Contents.swift)
 *The above file demonstrates:*
 1. create a Queue with the following functions: 
-	pop: removes the item out of the queue
-	push: inserts item into the queue
-	peek: returns the top element on the stack
-	isEmpty: returns true if there are no elemnts in the stack
-	max: returns the max value in the stack
+	pop: removes the item out of the queue.
+	push: inserts item into the queue.
+	peek: returns the top element on the stack.
+	isEmpty: returns true if there are no elemnts in the stack.
+	max: returns the max value in the stack.
 2. return an array of integers that are the product of every item in a given int array but itself.
+3. return an array of similar items from both arrays with O(1) space complexity and O(n) of run time.
 
 ## [HackerRank Challenges Playground](https://github.com/RinniSwift/tech-interviews/blob/master/HackerRankChallenges.playground/Contents.swift)
 check out some questions from HackerRank that I went through along with solutions!
