@@ -126,6 +126,35 @@ stack.max()
 
 
 
+/*
+ given two sorted arrays, return an array that contains common values
+ */
+
+func returnCommons(arr1: [Int], arr2: [Int]) -> [Int]  {
+    
+    var commonArr = Set<Int>()
+
+    var pointer1 = 0
+    var pointer2 = 0
+    
+    while pointer1 < arr1.count && pointer2 < arr2.count {
+        if arr1[pointer1] < arr2[pointer2] {
+            pointer1 += 1
+        } else if arr1[pointer1] > arr2[pointer2] {
+            pointer2 += 1
+        } else if arr1[pointer1] == arr2[pointer2] {
+            commonArr.insert(arr1[pointer1])
+            pointer2 += 1
+            pointer1 += 1
+        }
+    }
+    
+    return Array(commonArr)
+    
+}
+
+returnCommons(arr1: [1, 5, 7, 9], arr2: [9, 10, 11, 12, 13, 14])
+
 
 
 
