@@ -10,6 +10,9 @@
 	max: returns the max value in the stack.
 2. return an array of integers that are the product of every item in a given int array but itself.
 3. return an array of similar items from both arrays with O(1) space complexity and O(n) of run time.
+4. given string one and string two, find the minimum window in string one which will contain all the characters in string two. *"ADOBECODEBANC", "ABC" -> "BANC"*
+5. given 2d array of ones and zeros, where ones represent islands and zeros represent water, find the height of the island if there can only be one island. return height and width in tuple values.
+
 
 ## [HackerRank Challenges Playground](https://github.com/RinniSwift/tech-interviews/blob/master/HackerRankChallenges.playground/Contents.swift)
 check out some questions from HackerRank that I went through along with solutions!
