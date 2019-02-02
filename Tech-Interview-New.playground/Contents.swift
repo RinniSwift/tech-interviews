@@ -163,6 +163,11 @@ returnCommons(arr1: [1, 5, 7, 9], arr2: [9, 10, 11])
 
 /*
  given a string one and string two, find the minimum window in string one which will contain all the characters in string two.
+ 
+ returnSubstring(one: "ADOBECODEBANC", two: "ABC")
+                       ^  ^ ^   ^^ ^
+                       A  B C   BA C
+
  */
 
 func returnSubstring(one: String, two: String) {
