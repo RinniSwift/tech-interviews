@@ -153,7 +153,87 @@ func returnCommons(arr1: [Int], arr2: [Int]) -> [Int]  {
     
 }
 
-returnCommons(arr1: [1, 5, 7, 9], arr2: [9, 10, 11, 12, 13, 14])
+returnCommons(arr1: [1, 5, 7, 9], arr2: [9, 10, 11])
+
+/*
+ use the method .intersection() on both the sets!
+ */
+
+
+
+/*
+ given a string one and string two, find the minimum window in string one which will contain all the characters in string two.
+ */
+
+func returnSubstring(one: String, two: String) {
+//    var resultString = ""
+//    var one = two
+//    if resultString.count <= 0 {
+//        if two.prefix(3).sorted() == resultString.sorted() {
+//            resultString += two.prefix(3)
+//        } else {
+//            let newStringB = two.suffix(two.count - 1)
+//            print(two.prefix(3))
+//            print(resultString)
+//            returnSubstring(one: one, two: String(newStringB))
+//        }
+//    } else {
+//        return resultString
+//    }
+    
+    
+    var letterAndIndexFound = [Character: [Int]]()
+    
+    for (index, char) in one.enumerated() {
+        if two.contains(char) {
+            if letterAndIndexFound[char] != nil {
+                letterAndIndexFound[char]?.append(index)
+            } else {
+                letterAndIndexFound[char] = [index]
+            }
+        }
+    }
+    
+    print(letterAndIndexFound)
+    
+    
+}
+returnSubstring(one: "ADOBECODEBANC", two: "ABC")
+
+
+
+/*
+ 
+ given 2d array of ones and zeros, where ones represents represent islands and zeros represent water, find the height of the island if there can only be one island
+ 
+ [[0, 0, 0, 0],
+  [0, 1, 1, 0],
+  [0, 1, 1, 0],
+  [0, 1, 1, 0]]
+ 
+ */
+
+func returnIslandHeight(islandMatrix: [[Int]]) -> (Int, Int)  {
+    
+    var rows = Set<Int>()
+    var columns = Set<Int>()
+    
+    for i in 0...(islandMatrix.count - 1) {
+        for j in 0...(islandMatrix[0].count - 1) {
+            if islandMatrix[i][j] == 1 {
+                rows.insert(i)
+                columns.insert(j)
+            }
+        }
+    }
+    
+    return (rows.count, columns.count)
+    
+}
+print(returnIslandHeight(islandMatrix: [[0, 1, 1, 0],
+                                        [0, 1, 1, 0],
+                                        [0, 0, 0, 0],
+                                        [0, 0, 0, 0]]))
 
 
 
