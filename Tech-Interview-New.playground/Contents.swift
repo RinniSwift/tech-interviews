@@ -201,6 +201,24 @@ func returnSubstring(one: String, two: String) {
     
     print(letterAndIndexFound)
     
+    print(letterAndIndexFound.values.count)
+    
+    var diffOne = [Int]()
+    var diffTwo = [Int]()
+    
+    
+    for i in 0...(letterAndIndexFound.count - 1) {
+        diffOne.append(Array(letterAndIndexFound)[i].value[0])
+    }
+    
+    for i in 0...(letterAndIndexFound.count - 1) {
+        diffTwo.append(Array(letterAndIndexFound)[i].value[1])
+    }
+    
+    print(diffOne, diffTwo)
+    
+    
+    
     
 }
 returnSubstring(one: "ADOBECODEBANC", two: "ABC")
@@ -219,26 +237,30 @@ returnSubstring(one: "ADOBECODEBANC", two: "ABC")
  */
 
 func returnIslandHeight(islandMatrix: [[Int]]) -> (Int, Int)  {
+
+    var rowCount = 0
+    var columnCount = 0
     
-    var rows = Set<Int>()
-    var columns = Set<Int>()
-    
-    for i in 0...(islandMatrix.count - 1) {
-        for j in 0...(islandMatrix[0].count - 1) {
-            if islandMatrix[i][j] == 1 {
-                rows.insert(i)
-                columns.insert(j)
+    for row in islandMatrix {
+        if row.contains(1) {
+            rowCount += 1
+            for column in row {
+                if column == 1 {
+                    columnCount += 1
+                }
             }
         }
     }
     
-    return (rows.count, columns.count)
-    
+    guard rowCount > 0 else { return (0,0) }
+    return (rowCount, columnCount / rowCount)
 }
-print(returnIslandHeight(islandMatrix: [[0, 1, 1, 0],
-                                        [0, 1, 1, 0],
-                                        [0, 0, 0, 0],
-                                        [0, 0, 0, 0]]))
+print(returnIslandHeight(islandMatrix: [[0, 0, 0, 0, 0],
+                                        [0, 1, 0, 0, 0],
+                                        [0, 1, 0, 0, 0],
+                                        [0, 0, 0, 0, 0],
+                                        [0, 0, 0, 0, 0],
+                                        [0, 0, 0, 0, 0]]))
 
 
 
