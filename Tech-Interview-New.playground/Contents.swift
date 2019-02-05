@@ -276,10 +276,14 @@ func reverseRotateArr(arr: [Int], k: Int) -> [Int] {
 }
 reverseRotateArr(arr: [1,2,3,4,5,6,7], k: 3)
 
-
-
-
-
+// USING ARRAY SLICE
+func reverseRotateStringArrSlice(arr: [Int], k: Int) -> [Int] {
+    var last = arr.dropFirst(arr.count - k)
+    var first = arr.dropLast(k)
+    
+    return Array(last + first)
+}
+print(reverseRotateStringArrSlice(arr: [1,2,3,4,5,6,7], k: 4))
 
 
 
