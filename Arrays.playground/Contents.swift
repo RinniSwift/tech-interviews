@@ -36,3 +36,18 @@ var nums = [1,2,3,4,5,6,7]
 rotateRight(arr: &nums, k: 3)
 
 
+
+/*
+                                        given two arrays, return the items that contain in both the arrays
+ */
+func returnSimilarities(arrOne: [Int], arrTwo: [Int]) -> [Int] {
+    var resultArr = [Int]()
+    for i in 0...(arrOne.count - 1) {
+        if arrTwo.contains(arrOne[i]) {
+            resultArr.append(arrOne[i])
+        }
+    }
+    return resultArr
+}
+returnSimilarities(arrOne: [1, 2, 3, 7], arrTwo: [2, 7, 4, 5])
+
