@@ -201,7 +201,6 @@ func returnSubstring(one: String, two: String) {
     
     print(letterAndIndexFound)
     
-    print(letterAndIndexFound.values.count)
     
     var diffOne = [Int]()
     var diffTwo = [Int]()
@@ -209,17 +208,17 @@ func returnSubstring(one: String, two: String) {
     
     for i in 0...(letterAndIndexFound.count - 1) {
         diffOne.append(Array(letterAndIndexFound)[i].value[0])
-    }
-    
-    for i in 0...(letterAndIndexFound.count - 1) {
         diffTwo.append(Array(letterAndIndexFound)[i].value[1])
     }
+
+    var diff1 = (diffOne.sorted().last)! - (diffOne.sorted().first)!
+    var diff2 = (diffTwo.sorted().last)! - (diffTwo.sorted().first)!
     
-    print(diffOne, diffTwo)
-    
-    
-    
-    
+//    if diff1 <= diff2 {
+//        let start = one.index(after: <#T##String.Index#>)
+//    } else {
+//        print(diffTwo)
+//    }
 }
 returnSubstring(one: "ADOBECODEBANC", two: "ABC")
 
@@ -264,8 +263,18 @@ print(returnIslandHeight(islandMatrix: [[0, 0, 0, 0, 0],
 
 
 
-
-
+/*
+Given an array, rotate the array to the right by k steps, where k is non-negative.
+ */
+func reverseRotateArr(arr: [Int], k: Int) -> [Int] {
+    var array = arr
+    for _ in 1...k {
+        let last = array.removeLast()
+        array.insert(last, at: 0)
+    }
+    return array
+}
+reverseRotateArr(arr: [1,2,3,4,5,6,7], k: 3)
 
 
 
