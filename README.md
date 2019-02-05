@@ -12,6 +12,7 @@
 3. return an array of similar items from both arrays with O(1) space complexity and O(n) of run time.
 4. given string one and string two, find the minimum window in string one which will contain all the characters in string two. *"ADOBECODEBANC", "ABC" -> "BANC"*
 5. given 2d array of ones and zeros, where ones represent islands and zeros represent water, find the height of the island if there can only be one island. return height and width in tuple values.
+6. reverse an array of ints k times. 
 
 
 ## [HackerRank Challenges Playground](https://github.com/RinniSwift/tech-interviews/blob/master/HackerRankChallenges.playground/Contents.swift)
