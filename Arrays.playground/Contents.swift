@@ -32,8 +32,8 @@ func rotateRight(arr: inout [Int], k: Int) -> [Int] {
     }
     return arr
 }
-var nums = [1,2,3,4,5,6,7]
-rotateRight(arr: &nums, k: 3)
+//var nums = [1,2,3,4,5,6,7]
+//rotateRight(arr: &nums, k: 3)
 
 
 
@@ -49,5 +49,26 @@ func returnSimilarities(arrOne: [Int], arrTwo: [Int]) -> [Int] {
     }
     return resultArr
 }
-returnSimilarities(arrOne: [1, 2, 3, 7], arrTwo: [2, 7, 4, 5])
+//returnSimilarities(arrOne: [1, 2, 3, 7], arrTwo: [2, 7, 4, 5])
 
+
+
+/*
+                                         given two arrays, write a function to compute their intersection
+                                             arrOne: [1, 2, 2, 1] and arrTwo: [2, 2]   -->  [2, 2]
+                                                     1. if arrTwo is always larger than arrOne
+ */
+func intersection(arrOne: [Int], arrTwo: inout [Int]) -> [Int] {
+    var resultArr = [Int]()
+    for num in arrOne {
+        for (ind, item) in arrTwo.enumerated() {
+            if num == item {
+                resultArr.append(item)
+                arrTwo.remove(at: ind)
+            }
+        }
+    }
+    return resultArr
+}
+var arrTwo = [1, 4, 5, 6, 7, 3]
+intersection(arrOne: [1, 2, 3, 4], arrTwo: &arrTwo)
