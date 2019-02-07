@@ -254,12 +254,7 @@ twoSumsNew(arr: [1, 4, 4, 7, 6, 5], k: 9)
  */
 func returnDupl(one: [Int], two: [Int]) -> [Int] {
     var res = Set<Int>()
-    var set = Set<Int>()
-    
-
-    for num in one {
-        set.insert(num)
-    }
+    let set = Set(one)
     
     for number in two {
         if set.contains(number) {
@@ -270,3 +265,55 @@ func returnDupl(one: [Int], two: [Int]) -> [Int] {
     return Array(res)
 }
 returnDupl(one: [1, 2, 3, 4, 5, 5, 6, 2, 1], two: [5, 3, 6, 7, 8, 5])
+
+
+
+/*
+                         given an array, return the product of every item except the item at index i
+                                            [1, 2, 3, 4] -> [24, 12, 8, 6]
+ */
+func returnProduct(arr: [Int]) -> [Int] {
+    
+    var resultArr = [Int]()
+    
+    var product = 1
+    
+    for i in 0..<arr.count {
+        resultArr.append(product)
+        product *= arr[i]
+    }
+    print(resultArr)
+    
+    product = 1
+    for i in stride(from: (arr.count - 1), through: 0, by: -1) {
+        resultArr[i] *= product
+        product *= arr[i]
+    }
+    
+    return resultArr
+}
+returnProduct(arr: [1, 2, 3, 4])
+
+
+
+
+/*
+             given an array of duplicates, return only the numbers once
+ */
+func returnNumbersOnce(arr: inout [Int]) -> [Int] {
+    
+    var pointer1 = 0
+    var pointer2 = 1
+    
+    while pointer1 < (arr.count) && pointer2 < (arr.count) {
+        if arr[pointer1] == arr[pointer2] {
+            arr.remove(at: pointer2)
+        } else {
+            pointer1 += 1
+            pointer2 += 1
+        }
+    }
+    return arr
+}
+var numbers = [1, 1, 1, 2, 2, 2, 3, 3, 3, 3, 4, 5]
+returnNumbersOnce(arr: &numbers)
