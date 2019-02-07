@@ -57,18 +57,135 @@ func returnSimilarities(arrOne: [Int], arrTwo: [Int]) -> [Int] {
                                          given two arrays, write a function to compute their intersection
                                              arrOne: [1, 2, 2, 1] and arrTwo: [2, 2]   -->  [2, 2]
                                                      1. if arrTwo is always larger than arrOne
+                                     **************************************************************************
  */
 func intersection(arrOne: [Int], arrTwo: inout [Int]) -> [Int] {
+//    var resultArr = [Int]()
+//    for num in arrOne {
+//        for (ind, item) in arrTwo.enumerated() {
+//            if num == item {
+//                resultArr.append(item)
+//                arrTwo.remove(at: ind)
+//            }
+//        }
+//    }
+//    return resultArr
+    
+//    var resultArr = [Int]()
+//    var newNums2 = arrTwo
+//    for num in arrOne {
+//        for (ind, item) in newNums2.enumerated() {
+//            if num == item {
+//                resultArr.append(item)
+//                newNums2.remove(at: ind)
+//            }
+//        }
+//    }
+//    return resultArr
+    
+    
     var resultArr = [Int]()
+    var newNums2 = arrTwo
+
     for num in arrOne {
-        for (ind, item) in arrTwo.enumerated() {
+        for (ind, item) in newNums2.enumerated() {
             if num == item {
                 resultArr.append(item)
-                arrTwo.remove(at: ind)
+                newNums2.remove(at: ind)
             }
         }
     }
     return resultArr
+    
 }
-var arrTwo = [1, 4, 5, 6, 7, 3]
-intersection(arrOne: [1, 2, 3, 4], arrTwo: &arrTwo)
+var this = [1, 4, 3, 5, 6, 7]
+intersection(arrOne: [1, 2, 3, 4, 3, 4, 3], arrTwo: &this)
+
+
+/*
+                             given an array of integers, add 1 to it and return the result number in an array format
+                                                         [1, 2, 3]  -->  [1, 2, 4]
+ */
+func addOne(arr: [Int]) {
+//    var additional =  arr
+//    if arr[(arr.count - 1)] < 9 {
+//        additional[(arr.count - 1)] = arr.last! + 1
+//    } else {
+//        additional[arr.count - 2] = additional[arr.count - 2] + 1
+//        additional[arr.count - 1] = 0
+//    }
+//    return additional
+    
+    var resultArr = [Int]()
+    var string = ""
+    for number in arr {
+        string.append(String(number))
+    }
+//    let stringInInt = Int(string)! + 1
+//    for num in stringInInt {
+//        resultArr.append(num)
+//    }
+    
+    for i in stride(from: 10, through: 1, by: -1) {
+        print(i)
+    }
+    
+}
+//addOne(arr: [1, 2, 9])
+
+
+
+
+/*
+                 Given a matrix containg 0's and 1's, return a boolean indicating whether there is a path of 0's
+ 
+                                [[0, 0, 1],
+                                 [1, 0, 1],
+                                 [0, 0, 1]]     -> true
+ 
+                                 [[0, 0, 1],
+                                  [0, 0, 1],
+                                  [1, 0, 1]
+                                  [0, 1, 1]]    -> false
+ */
+
+func checkValidPath(matrix: inout [[Int]]) -> Bool {
+    
+    var count = 0
+    
+    for i in 0...(matrix.count - 1) {
+        for j in 0...(matrix[i].count - 1) {
+            if matrix[i][j] == 0 {
+                changeZeros(&matrix, i, j)
+                count += 1
+            }
+        }
+    }
+    
+    if count == 1 {
+        return true
+    }
+    
+    return false
+}
+func changeZeros(_ matrix: inout [[Int]], _ i: Int, _ j: Int) {
+    guard i >= 0, j >= 0, i < matrix.count, j < matrix[0].count else { return }
+    
+    if matrix[i][j] == 0 {
+        matrix[i][j] = 1
+        changeZeros(&matrix, i - 1, j)
+        changeZeros(&matrix, i + 1, j)
+        changeZeros(&matrix, i, j - 1)
+        changeZeros(&matrix, i, j + 1)
+    }
+    
+    
+}
+
+
+var grid1 = [[0, 0, 1],
+             [1, 0, 0],
+             [1, 1, 0]]
+checkValidPath(matrix: &grid1)
+
+

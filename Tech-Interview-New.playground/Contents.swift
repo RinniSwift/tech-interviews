@@ -266,6 +266,7 @@ print(returnIslandHeight(islandMatrix: [[0, 0, 0, 0, 0],
 /*
 Given an array, rotate the array to the right by k steps, where k is non-negative.
  */
+
 func reverseRotateArr(arr: [Int], k: Int) -> [Int] {
     var array = arr
     for _ in 1...k {
@@ -278,16 +279,12 @@ reverseRotateArr(arr: [1,2,3,4,5,6,7], k: 3)
 
 // USING ARRAY SLICE
 func reverseRotateStringArrSlice(arr: [Int], k: Int) -> [Int] {
-    var last = arr.dropFirst(arr.count - k)
-    var first = arr.dropLast(k)
+    let last = arr.dropFirst(arr.count - k)
+    let first = arr.dropLast(k)
     
     return Array(last + first)
 }
 print(reverseRotateStringArrSlice(arr: [1,2,3,4,5,6,7], k: 4))
-
-
-
-
 
 
 
