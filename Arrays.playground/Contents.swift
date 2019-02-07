@@ -189,3 +189,26 @@ var grid1 = [[0, 0, 1],
 checkValidPath(matrix: &grid1)
 
 
+/*
+             given an array and a limit, find the two indices that add up to that number
+                        [1, 4, 3, 7, 5] , k = 9
+ */
+
+func twoSums(arr: [Int], k: Int) -> [Int] {
+    var resultArr = [Int]()
+    
+    var difference: Int? = nil
+    for (ind, num) in arr.enumerated() {
+        let diff = k - num
+        if arr.contains(diff) {
+            difference = diff
+            resultArr.append(ind)
+        }
+        if num == difference {
+            resultArr.append(ind)
+        }
+    }
+    
+    return resultArr
+}
+twoSums(arr: [1, 4, 3, 7, 5], k: 9)
