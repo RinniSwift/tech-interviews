@@ -137,16 +137,16 @@ func addOne(arr: [Int]) {
 
 
 /*
-                 Given a matrix containg 0's and 1's, return a boolean indicating whether there is a path of 0's
- 
-                                [[0, 0, 1],
-                                 [1, 0, 1],
-                                 [0, 0, 1]]     -> true
- 
-                                 [[0, 0, 1],
-                                  [0, 0, 1],
-                                  [1, 0, 1]
-                                  [0, 1, 1]]    -> false
+ Given a matrix containg 0's and 1's, return a boolean indicating whether there is a path of 0's
+
+                [[0, 0, 1],
+                 [1, 0, 1],
+                 [0, 0, 1]]     -> true
+
+                 [[0, 0, 1],
+                  [0, 0, 1],
+                  [1, 0, 1]
+                  [0, 1, 1]]    -> false
  */
 
 func checkValidPath(matrix: inout [[Int]]) -> Bool {
@@ -168,6 +168,8 @@ func checkValidPath(matrix: inout [[Int]]) -> Bool {
     
     return false
 }
+
+
 func changeZeros(_ matrix: inout [[Int]], _ i: Int, _ j: Int) {
     guard i >= 0, j >= 0, i < matrix.count, j < matrix[0].count else { return }
     
@@ -189,6 +191,8 @@ var grid1 = [[0, 0, 1],
 checkValidPath(matrix: &grid1)
 
 
+
+
 /*
              given an array and a limit, find the two indices that add up to that number
                         [1, 4, 3, 7, 5] , k = 9
@@ -199,9 +203,8 @@ func twoSums(arr: [Int], k: Int) -> [Int] {
     
     var difference: Int? = nil
     for (ind, num) in arr.enumerated() {
-        let diff = k - num
-        if arr.contains(diff) {
-            difference = diff
+        difference = k - num
+        if arr.contains(difference!) {
             resultArr.append(ind)
         }
         if num == difference {
@@ -211,4 +214,59 @@ func twoSums(arr: [Int], k: Int) -> [Int] {
     
     return resultArr
 }
-twoSums(arr: [1, 4, 3, 7, 5], k: 9)
+twoSums(arr: [1, 4, 7, 5], k: 9)
+
+
+
+
+func twoSumsNew(arr: [Int], k: Int) -> [Int] {
+    
+    var dict = [Int: [Int]]()
+    var resultArr = [Int]()
+    
+    for (ind, num) in arr.enumerated() {
+        if dict[num] == nil {
+            dict[num] = [ind]
+        } else {
+            dict[num]?.append(ind)
+        }
+        
+    }
+    
+    for (ind, num) in arr.enumerated() {
+        let diff = k - num
+        if dict[diff] != nil {
+            resultArr.append(ind)
+            resultArr.append(dict[diff]![0])
+        }
+    }
+    
+    return resultArr
+}
+twoSumsNew(arr: [1, 4, 4, 7, 6, 5], k: 9)
+
+
+
+/*
+ 
+ given two arrays, return the duplicates in both the arrays
+ 
+ */
+func returnDupl(one: [Int], two: [Int]) -> [Int] {
+    var res = Set<Int>()
+    var set = Set<Int>()
+    
+
+    for num in one {
+        set.insert(num)
+    }
+    
+    for number in two {
+        if set.contains(number) {
+            res.insert(number)
+        }
+    }
+    
+    return Array(res)
+}
+returnDupl(one: [1, 2, 3, 4, 5, 5, 6, 2, 1], two: [5, 3, 6, 7, 8, 5])
