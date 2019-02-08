@@ -41,15 +41,15 @@ func rotateRight(arr: inout [Int], k: Int) -> [Int] {
                                         given two arrays, return the items that contain in both the arrays
  */
 func returnSimilarities(arrOne: [Int], arrTwo: [Int]) -> [Int] {
-    var resultArr = [Int]()
+    var resultArr = Set<Int>()
     for i in 0...(arrOne.count - 1) {
         if arrTwo.contains(arrOne[i]) {
-            resultArr.append(arrOne[i])
+            resultArr.insert(arrOne[i])
         }
     }
-    return resultArr
+    return Array(resultArr)
 }
-//returnSimilarities(arrOne: [1, 2, 3, 7], arrTwo: [2, 7, 4, 5])
+returnSimilarities(arrOne: [1, 2, 3, 7, 7], arrTwo: [2, 7, 4, 5])
 
 
 
@@ -243,7 +243,7 @@ func twoSumsNew(arr: [Int], k: Int) -> [Int] {
     
     return resultArr
 }
-twoSumsNew(arr: [1, 4, 4, 7, 6, 5], k: 9)
+//twoSumsNew(arr: [1, 4, 4, 7, 6, 5], k: 9)
 
 
 
@@ -264,7 +264,7 @@ func returnDupl(one: [Int], two: [Int]) -> [Int] {
     
     return Array(res)
 }
-//returnDupl(one: [1, 2, 3, 4, 5, 5, 6, 2, 1], two: [5, 3, 6, 7, 8, 5])
+returnDupl(one: [1, 2, 3, 4, 5, 5, 6, 2, 1], two: [5, 3, 6, 7, 8, 5])
 
 
 
@@ -353,3 +353,29 @@ func reverseOrder(stringInArr: [Character]) -> [Character] {
 reverseOrder(stringInArr: [ "p", "e", "r", "f", "e", "c", "t", " ",
                             "m", "a", "k", "e", "s", " ",
                             "p", "r", "a", "c", "t", "i", "c", "e" ])
+
+
+/*
+             given an array of numbers, return the values that have been are a peak
+             [2, 3, 20, 7, 30, 40, 90, 50]   --> 20 or 90
+ 
+ */
+func returnPeaks(arr: [Int]) -> Int {
+    var array = arr
+    var pointer = arr.count / 2
+    
+    while pointer >= 0 && pointer < arr.count {
+        if array[pointer] > array[pointer + 1] && array[pointer] > array[pointer - 1] {
+            return array[pointer]
+        } else if array[pointer - 1] < array[pointer] {
+            array = Array(array[0..<pointer])
+            pointer = array.count / 2
+        } else if array[pointer + 1] < array[pointer] {
+            array = Array(array[(pointer + 1)...])
+            pointer = array.count / 2
+        }
+    }
+    
+    return 0
+}
+returnPeaks(arr: [2, 3, 20, 7, 30, 40, 90, 50])
