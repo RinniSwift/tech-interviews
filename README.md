@@ -13,6 +13,7 @@
 9. given an array, return the product of every item except the item at index i
 10. given an array of duplicates, return only the numbers once
 11. reverse the array that contains characters that form a sentence.
+12. given an array of numbers, return the peak.
 
 ## [Tech-Interview-New.playground](https://github.com/RinniSwift/tech-interviews/blob/master/Tech-Interview-New.playground/Contents.swift)
 *The above file demonstrates:*
@@ -26,7 +27,7 @@
 3. return an array of similar items from both arrays with O(1) space complexity and O(n) of run time.
 4. given string one and string two, find the minimum window in string one which will contain all the characters in string two. *"ADOBECODEBANC", "ABC" -> "BANC"*
 5. given 2d array of ones and zeros, where ones represent islands and zeros represent water, find the height of the island if there can only be one island. return height and width in tuple values.
-6. reverse an array of ints k times. 
+6. rotate an array of ints k times. 
 
 
 ## [HackerRank Challenges Playground](https://github.com/RinniSwift/tech-interviews/blob/master/HackerRankChallenges.playground/Contents.swift)
