@@ -1,5 +1,16 @@
 # Tech Interview
 
+## [Tech-Interview-New.playground](https://github.com/RinniSwift/tech-interviews/blob/master/Arrays.playground/Contents.swift)
+*The above file demonstrates*
+1. return the highest product of 3 numbers from a given array
+2. rotate an array to the right by k amount of times
+3. given two arrays, return the items that contain in both arrays
+4. given two arrays, compute their intersections (X)
+5. given an array of integers, add 1 to it and return the result number in an array format
+6. given a matrix containg 0's and 1's, return a boolean indicating whether there is a path of 0's
+7. given an array and a limit, find the two indices that add up to that number
+8. 
+
 ## [Tech-Interview-New.playground](https://github.com/RinniSwift/tech-interviews/blob/master/Tech-Interview-New.playground/Contents.swift)
 *The above file demonstrates:*
 1. create a Queue with the following functions: 
