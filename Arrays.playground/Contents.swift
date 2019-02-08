@@ -264,7 +264,7 @@ func returnDupl(one: [Int], two: [Int]) -> [Int] {
     
     return Array(res)
 }
-returnDupl(one: [1, 2, 3, 4, 5, 5, 6, 2, 1], two: [5, 3, 6, 7, 8, 5])
+//returnDupl(one: [1, 2, 3, 4, 5, 5, 6, 2, 1], two: [5, 3, 6, 7, 8, 5])
 
 
 
@@ -292,7 +292,7 @@ func returnProduct(arr: [Int]) -> [Int] {
     
     return resultArr
 }
-returnProduct(arr: [1, 2, 3, 4])
+//returnProduct(arr: [1, 2, 3, 4])
 
 
 
@@ -315,5 +315,41 @@ func returnNumbersOnce(arr: inout [Int]) -> [Int] {
     }
     return arr
 }
-var numbers = [1, 1, 1, 2, 2, 2, 3, 3, 3, 3, 4, 5]
-returnNumbersOnce(arr: &numbers)
+//var numbers = [1, 1, 1, 2, 2, 2, 3, 3, 3, 3, 4, 5]
+//returnNumbersOnce(arr: &numbers)
+
+
+
+
+
+
+/*
+ reverse the string in an array from
+ 
+                 [ ‘p’, ‘e’, ‘r’, ‘f’, ‘e’, ‘c’, ‘t’, '  ',
+                   ‘m’, ‘a’, ‘k’, ‘e’, ‘s’, '  ',
+                   ‘p’, ‘r’, ‘a’, ‘c’, ‘t’, ‘i’, ‘c’, ‘e’ ]
+ 
+                                 to
+ 
+                 [ ‘p’, ‘r’, ‘a’, ‘c’, ‘t’, ‘i’, ‘c’, ‘e’, '  ',
+                   ‘m’, ‘a’, ‘k’, ‘e’, ‘s’, '  ',
+                   ‘p’, ‘e’, ‘r’, ‘f’, ‘e’, ‘c’, ‘t’ ]
+ */
+
+func reverseOrder(stringInArr: [Character]) -> [Character] {
+    
+    var wordArr = String(stringInArr).split(separator: " ") // ["perfect", "makes", "practice"]
+    let length = wordArr.count
+    
+    for i in stride(from: length - 1, through: 0, by: -1) {
+        wordArr.append(wordArr[i])                          // ["perfect", "makes", "practice", "practice", "makes", "perfect"]
+    }
+    wordArr.removeSubrange(0..<length)                      // ["practice", "makes", "perfect"]
+    
+    let joined = wordArr.joined(separator: " ")
+    return Array(joined)
+}
+reverseOrder(stringInArr: [ "p", "e", "r", "f", "e", "c", "t", " ",
+                            "m", "a", "k", "e", "s", " ",
+                            "p", "r", "a", "c", "t", "i", "c", "e" ])
