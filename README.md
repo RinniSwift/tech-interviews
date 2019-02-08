@@ -1,6 +1,6 @@
 # Tech Interview
 
-## [Tech-Interview-New.playground](https://github.com/RinniSwift/tech-interviews/blob/master/Arrays.playground/Contents.swift)
+## [Arrays.playground](https://github.com/RinniSwift/tech-interviews/blob/master/Arrays.playground/Contents.swift)
 *The above file demonstrates*
 1. return the highest product of 3 numbers from a given array
 2. rotate an array to the right by k amount of times
@@ -9,7 +9,10 @@
 5. given an array of integers, add 1 to it and return the result number in an array format
 6. given a matrix containg 0's and 1's, return a boolean indicating whether there is a path of 0's
 7. given an array and a limit, find the two indices that add up to that number
-8. 
+8. given two arrays, return items that contain in both arrays
+9. given an array, return the product of every item except the item at index i
+10. given an array of duplicates, return only the numbers once
+11. reverse the array that contains characters that form a sentence.
 
 ## [Tech-Interview-New.playground](https://github.com/RinniSwift/tech-interviews/blob/master/Tech-Interview-New.playground/Contents.swift)
 *The above file demonstrates:*
