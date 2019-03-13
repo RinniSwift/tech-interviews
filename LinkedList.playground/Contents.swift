@@ -78,7 +78,40 @@ class LinkedList<T: Equatable> {
         self.head = newNode
     }
     
-    // TODO: delete() deleted the node that was specified
+    // TODO: delete() deletes the node that was specified
+    func delete(_ value: T) {
+        
+        long -= 1
+        var curr = self.head
+        var previous: Node<T>? = nil
+        
+        while true {
+            guard curr?.data != nil else {
+                return
+            }
+            
+            if curr?.data == value {    // found matching data
+                if previous != nil {    // there is previous data
+                    if curr?.next == nil {  // there is no next data
+                        self.tail = previous
+                        previous?.next = nil
+                    } else {    // there is a next data
+                        previous?.next = curr?.next
+                    }
+                } else {    // if there is no previous data
+                    if curr?.next != nil {  // there is a next
+                        self.head = curr?.next
+                    } else {    // there is no next
+                        self.head = nil
+                        self.tail = nil
+                    }
+                }
+            }
+            previous = curr
+            curr = curr?.next
+        }
+        
+    }
     
     // TODO: replace(old, new) replace the old nodes data to the new nodes data
     
@@ -98,3 +131,8 @@ linkedList.tail?.data
 
 linkedList.items()
 linkedList.length
+
+linkedList.delete(5)
+linkedList.items()
+linkedList.length
+linkedList.head?.data
