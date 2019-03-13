@@ -26,10 +26,24 @@ class LinkedList<T: Equatable> {
     // TODO: items() returns a dynamic array of all items in the linked list.
     
     // TODO: isEmpty() return bool indicating if linked list is empty
+    func isEmpty() -> Bool {
+        return head == nil
+    }
     
     // TODO: length() returns count of total length in the linked list
     
     // TODO: append() appends the node to the last of the linked list
+    func append(_ value: T) {
+        let newNode = Node(value)
+        
+        guard tail != nil else {
+            self.tail = newNode
+            self.head = newNode
+            return
+        }
+        self.tail?.next = newNode
+        self.tail = newNode
+    }
     
     // TODO: prepend() prepends the node to the beginning of the linked list
     
@@ -38,3 +52,14 @@ class LinkedList<T: Equatable> {
     // TODO: replace(old, new) replace the old nodes data to the new nodes data
     
 }
+
+
+
+let linkedList = LinkedList<Int>()
+linkedList.isEmpty()
+
+linkedList.append(5)
+linkedList.append(6)
+linkedList.append(1)
+linkedList.head?.data
+linkedList.tail?.data
