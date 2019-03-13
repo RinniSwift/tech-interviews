@@ -91,22 +91,22 @@ class LinkedList<T: Equatable> {
             }
             
             if curr?.data == value {    // found matching data
+                
                 if previous != nil {    // there is previous data
-                    if curr?.next == nil {  // there is no next data
+                    if curr == self.tail {  // deleted node is tail
                         self.tail = previous
                         previous?.next = nil
-                    } else {    // there is a next data
-                        previous?.next = curr?.next
                     }
+                    previous?.next = curr?.next
                 } else {    // if there is no previous data
-                    if curr?.next != nil {  // there is a next
-                        self.head = curr?.next
-                    } else {    // there is no next
+                    if curr == self.tail {  // deleted node is the head and tail
                         self.head = nil
                         self.tail = nil
                     }
+                    self.head = curr?.next
                 }
             }
+            // didnt find matching data
             previous = curr
             curr = curr?.next
         }
@@ -132,7 +132,8 @@ linkedList.tail?.data
 linkedList.items()
 linkedList.length
 
-linkedList.delete(5)
+linkedList.delete(1)
 linkedList.items()
 linkedList.length
 linkedList.head?.data
+linkedList.tail?.data
