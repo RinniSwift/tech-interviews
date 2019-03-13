@@ -114,6 +114,16 @@ class LinkedList<T: Equatable> {
     }
     
     // TODO: replace(old, new) replace the old nodes data to the new nodes data
+    func replace(oldVal: T, newVal: T) {
+        var curr = self.head
+        
+        while curr != nil {
+            if curr?.data == oldVal {
+                curr?.data = newVal
+            }
+            curr = curr?.next
+        }
+    }
     
 }
 
@@ -132,8 +142,11 @@ linkedList.tail?.data
 linkedList.items()
 linkedList.length
 
-linkedList.delete(1)
+linkedList.delete(9)
 linkedList.items()
 linkedList.length
 linkedList.head?.data
 linkedList.tail?.data
+linkedList.replace(oldVal: 5, newVal: 10)
+linkedList.items()
+linkedList.head?.data
