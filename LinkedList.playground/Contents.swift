@@ -128,25 +128,41 @@ class LinkedList<T: Equatable> {
 }
 
 
+// ***TEST***
 
+// instantiating a linked list
 let linkedList = LinkedList<Int>()
-linkedList.isEmpty()
 
+// isEmpty()
+linkedList.isEmpty()    // true
 linkedList.append(5)
+linkedList.isEmpty()    // false
+
+// head, tail
 linkedList.append(6)
 linkedList.append(1)
-linkedList.prepend(9)
 linkedList.head?.data
 linkedList.tail?.data
 
+// items()
 linkedList.items()
+
+// length
 linkedList.length
 
+// prepend()
+linkedList.prepend(9)
+linkedList.items()
+linkedList.head?.data
+
+// delete()
 linkedList.delete(9)
 linkedList.items()
 linkedList.length
 linkedList.head?.data
 linkedList.tail?.data
+
+// replace()
 linkedList.replace(oldVal: 5, newVal: 10)
 linkedList.items()
 linkedList.head?.data
