@@ -24,6 +24,21 @@ class LinkedList<T: Equatable> {
     var tail: Node<T>? = nil    // initializes tail as empty
     
     // TODO: items() returns a dynamic array of all items in the linked list.
+    func items() -> [T] {
+        var items: [T] = []
+        
+        var curr = self.head
+        
+        while true {
+            guard curr != nil else {
+                break
+            }
+            items.append((curr?.data)!)
+            curr = curr?.next
+        }
+        
+        return items
+    }
     
     // TODO: isEmpty() return bool indicating if linked list is empty
     func isEmpty() -> Bool {
@@ -46,6 +61,17 @@ class LinkedList<T: Equatable> {
     }
     
     // TODO: prepend() prepends the node to the beginning of the linked list
+    func prepend(_ value: T) {
+        let newNode = Node(value)
+        
+        guard head != nil else {
+            self.head = newNode
+            self.tail = newNode
+            return
+        }
+        newNode.next = self.head
+        self.head = newNode
+    }
     
     // TODO: delete() deleted the node that was specified
     
@@ -61,5 +87,8 @@ linkedList.isEmpty()
 linkedList.append(5)
 linkedList.append(6)
 linkedList.append(1)
+linkedList.prepend(9)
 linkedList.head?.data
 linkedList.tail?.data
+
+linkedList.items()
