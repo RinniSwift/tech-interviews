@@ -46,10 +46,15 @@ class LinkedList<T: Equatable> {
     }
     
     // TODO: length() returns count of total length in the linked list
+    var long: Int = 0
+    var length: Int {
+        return long
+    }
     
     // TODO: append() appends the node to the last of the linked list
     func append(_ value: T) {
         let newNode = Node(value)
+        long += 1
         
         guard tail != nil else {
             self.tail = newNode
@@ -63,7 +68,7 @@ class LinkedList<T: Equatable> {
     // TODO: prepend() prepends the node to the beginning of the linked list
     func prepend(_ value: T) {
         let newNode = Node(value)
-        
+        long += 1
         guard head != nil else {
             self.head = newNode
             self.tail = newNode
@@ -92,3 +97,4 @@ linkedList.head?.data
 linkedList.tail?.data
 
 linkedList.items()
+linkedList.length
