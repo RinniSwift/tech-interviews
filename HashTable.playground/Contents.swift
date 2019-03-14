@@ -151,16 +151,6 @@ class HashTable<Key: Hashable, Value> {
         return abs(key.hashValue) % initSize
     }
     
-    
-    func set(key: Key, value: Value) {
-        // Insert or update the given key with its associated value.
-        let bucketIndex = self.bucketIndex(key: key)
-        
-        // TODO: find key value in linked list
-        // TODO: append to the linked list.
-        buckets[bucketIndex].append(HashElement(key: key, value: value))
-    }
-    
     func keys() -> [Key] {
         var allKeys: [Key] = []
         
@@ -178,13 +168,35 @@ class HashTable<Key: Hashable, Value> {
         }
         return allValues
     }
+    
+    
+    func items() -> [HashElement<Key, Value>] {
+        // Return a list of all items (key-value pairs) in this hash table.
+        var allItems: [HashElement<Key, Value>] = []
+        for bucket in buckets {
+            allItems += (bucket.items())
+        }
+        return allItems
+    }
+    
+    func set(key: Key, value: Value) {
+        // Insert or update the given key with its associated value.
+        let bucketIndex = self.bucketIndex(key: key)
+        
+        // TODO: find key value in linked list
+        // TODO: append to the linked list.
+        buckets[bucketIndex].append(HashElement(key: key, value: value))
+    }
 }
+
+
 let ht = HashTable<String, Any>(size: 8)
 print(ht.buckets.count)
 
 ht.set(key: "happy", value: 5)
 ht.keys()
 ht.values()
+ht.items()
 
 
 //for i in ht.buckets {
