@@ -125,6 +125,18 @@ class LinkedList<T: Equatable> {
         }
     }
     
+    func findKey(key: T) -> T? {
+        var curr = self.head
+        
+        while curr != nil {
+            if curr?.data == key {
+                return (curr?.data)!
+            }
+            curr = curr?.next
+        }
+        return nil
+    }
+    
 }
 
 
@@ -166,3 +178,7 @@ linkedList.tail?.data
 linkedList.replace(oldVal: 5, newVal: 10)
 linkedList.items()
 linkedList.head?.data
+
+// findKey()
+linkedList.findKey(key: 9)
+linkedList.findKey(key: 10)
