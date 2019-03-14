@@ -29,6 +29,15 @@
 5. given 2d array of ones and zeros, where ones represent islands and zeros represent water, find the height of the island if there can only be one island. return height and width in tuple values.
 6. rotate an array of ints k times. 
 
+## [LinkedList.playground](https://github.com/RinniSwift/tech-interviews/blob/master/LinkedList.playground/Contents.swift)
+*The above file demonstrates:*
+1. creating a Node and LinkedList class that conforms to the *Equatable* protocol
+2. isEmpty() returns bool indicating linked lists items
+3. items() returns an array of all items' data
+4. append() appends item to the linked list. takes value parameter
+5. prepend() prepends item to the linked list. taked value parameter
+6. delete() deletes the node with that value specified
+7. replace() replaces old items value to new value. takes in two parameters: old value and new value.
 
 ## [HackerRank Challenges Playground](https://github.com/RinniSwift/tech-interviews/blob/master/HackerRankChallenges.playground/Contents.swift)
 check out some questions from HackerRank that I went through along with solutions!
