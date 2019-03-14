@@ -151,6 +151,10 @@ class HashTable<Key: Hashable, Value> {
         return abs(key.hashValue) % initSize
     }
     
+    func length() -> Int {
+        return items().count
+    }
+    
     func keys() -> [Key] {
         var allKeys: [Key] = []
         
@@ -169,13 +173,13 @@ class HashTable<Key: Hashable, Value> {
         return allValues
     }
     
-    
     func items() -> [HashElement<Key, Value>] {
-        // Return a list of all items (key-value pairs) in this hash table.
+        // Return a list of all items (key-value pairs) in the hash table.
         var allItems: [HashElement<Key, Value>] = []
         for bucket in buckets {
             allItems += (bucket.items())
         }
+        
         return allItems
     }
     
@@ -187,6 +191,12 @@ class HashTable<Key: Hashable, Value> {
         // TODO: append to the linked list.
         buckets[bucketIndex].append(HashElement(key: key, value: value))
     }
+    
+    // TODO: contains() return true if given key contains in hashtable
+    
+    // TODO: get() return the value associated with the key in the hashtable. nil if none
+    
+    // TODO: delete() delete the key-value pair associated in the hashtable
 }
 
 
@@ -197,6 +207,8 @@ ht.set(key: "happy", value: 5)
 ht.keys()
 ht.values()
 ht.items()
+ht.set(key: "hi there", value: 9)
+ht.length()
 
 
 //for i in ht.buckets {
