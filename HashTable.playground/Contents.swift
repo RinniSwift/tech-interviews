@@ -111,6 +111,8 @@ class LinkedList<T: Equatable> {
             curr = curr?.next
         }
     }
+    
+    
 }
 
 
@@ -133,8 +135,7 @@ class HashTable<Key: Hashable, Value> {
     
     typealias Bucket = HashElement<Key, Value>
     
-    
-    var initSize = 8
+    var initSize: Int
     var buckets = [LinkedList<Bucket>]()
     
     init(size: Int) {
@@ -146,21 +147,56 @@ class HashTable<Key: Hashable, Value> {
         
     }
     
-    func bucketIndex(key: String) -> Int {
+    func bucketIndex(key: Key) -> Int {
         return abs(key.hashValue) % initSize
     }
     
+    
+    func set(key: Key, value: Value) {
+        // Insert or update the given key with its associated value.
+        let bucketIndex = self.bucketIndex(key: key)
+        
+        // TODO: find key value in linked list
+        // TODO: append to the linked list.
+        buckets[bucketIndex].append(HashElement(key: key, value: value))
+    }
+    
+    func keys() -> [Key] {
+        var allKeys: [Key] = []
+        
+        for bucket in buckets {
+            for item in bucket.items() {
+                allKeys.append(item.key)
+            }
+        }
+        return allKeys
+    }
+    
+    func values() -> [Value] {
+        var allValues: [Value] = []
+        
+        for bucket in buckets {
+            for item in bucket.items() {
+                allValues.append(item.value!)
+            }
+        }
+        return allValues
+    }
 }
 let ht = HashTable<String, Any>(size: 8)
 print(ht.buckets.count)
 
+ht.set(key: "happy", value: 5)
+ht.keys()
+ht.values()
+
 
 //for i in ht.buckets {
-//    i.append(10)
+//    i.append(HashElement(key: "hi", value: 5))
 //}
-//ht.buckets[4].append(7)
+//ht.buckets[4].append(HashElement(key: "something", value: 5))
 //for i in ht.buckets {
-////    print(i.head?.data)
+//    print(i.head?.data.key)
 //    print(i.items())
 //}
 
