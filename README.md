@@ -39,6 +39,18 @@
 6. delete() deletes the node with that value specified
 7. replace() replaces old items value to new value. takes in two parameters: old value and new value.
 
+## [HashTable.playground](https://github.com/RinniSwift/tech-interviews/blob/master/HashTable.playground/Contents.swift)
+*The above file demonstrates:*
+1. Node and LinkedList class from [linkedlist.playground](https://github.com/RinniSwift/tech-interviews/blob/master/LinkedList.playground/Contents.swift)
+2. creating a HashElement class which has two parameters, key which conforms to the hashable and value. which conform to the Equatable protocol.
+3. creating a HashTable class which has two types, Key: Hashable and Value. initializing hashtable has 1 parameter: size.
+4. buckets variable which contains an array of linkedlist of type HashElement<Key, Value>
+5. bucketIndex() returns Int indicating the bucket index
+6. keys() returns all keys in the hashtable
+7. values() returns all values in the hashtable
+8. items() returns all key-value pairs in the hashtable
+9. set() insert the given key and value to the hashtable. takes two parameters: key and value
+
 ## [HackerRank Challenges Playground](https://github.com/RinniSwift/tech-interviews/blob/master/HackerRankChallenges.playground/Contents.swift)
 check out some questions from HackerRank that I went through along with solutions!
 
