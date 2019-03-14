@@ -165,9 +165,7 @@ class HashTable<Key: Hashable, Value> {
         var allKeys: [Key] = []
         
         for bucket in buckets {
-            for item in bucket.items() {
-                allKeys.append(item.key)
-            }
+            allKeys += (bucket.items().map{ $0.key })
         }
         return allKeys
     }
@@ -176,9 +174,7 @@ class HashTable<Key: Hashable, Value> {
         var allValues: [Value] = []
         
         for bucket in buckets {
-            for item in bucket.items() {
-                allValues.append(item.value!)
-            }
+            allValues += (bucket.items().map{ $0.value! })
         }
         return allValues
     }
