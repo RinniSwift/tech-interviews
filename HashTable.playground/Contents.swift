@@ -114,25 +114,44 @@ class LinkedList<T: Equatable> {
 }
 
 
-class HashTable {
+class HashElement<T: Hashable, U>: Equatable {
+    static func == (lhs: HashElement<T, U>, rhs: HashElement<T, U>) -> Bool {
+        return lhs.key.hashValue == rhs.key.hashValue
+    }
     
-    var initSize: Int
-    var buckets = [LinkedList<Int>]()
+    var key: T
+    var value: U?
+    
+    init(key: T, value: U?) {
+        self.key = key
+        self.value = value
+    }
+}
+
+
+class HashTable<Key: Hashable, Value> {
+    
+    typealias Bucket = HashElement<Key, Value>
+    
+    
+    var initSize = 8
+    var buckets = [LinkedList<Bucket>]()
     
     init(size: Int) {
+        assert(size > 0)
         self.initSize = size
         for _ in 0...(size - 1) {
-            buckets.append(LinkedList<Int>())
+            buckets.append(LinkedList<Bucket>())
         }
         
     }
     
-    func bucketInde(key: String) -> Int {
+    func bucketIndex(key: String) -> Int {
         return abs(key.hashValue) % initSize
     }
     
 }
-let ht = HashTable(size: 8)
+let ht = HashTable<String, Any>(size: 8)
 print(ht.buckets.count)
 
 
