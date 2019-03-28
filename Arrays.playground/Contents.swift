@@ -356,7 +356,7 @@ reverseOrder(stringInArr: [ "p", "e", "r", "f", "e", "c", "t", " ",
 
 
 /*
-             given an array of numbers, return the values that have been are a peak
+             given an array of numbers, return the values that are a peak
              [2, 3, 20, 7, 30, 40, 90, 50]   --> 20 or 90
  
  */
@@ -379,3 +379,60 @@ func returnPeaks(arr: [Int]) -> Int {
     return 0
 }
 returnPeaks(arr: [2, 3, 20, 7, 30, 40, 90, 50])
+
+
+
+/*
+ given an array of arrays, find the largest path of the added up products where you can only go right or down the 2D array
+ 
+ [[1, 2, 3],
+  [4, 8, 2],
+  [2, 5, 3]]    max path would be (1, 4, 8, 5, 3) = 21
+ 
+ [[1, 2, 30],
+  [4, 8, 2],
+  [2, 5, 3]]    max path would be (1, 2, 30, 2, 3) = 38
+ 
+ return type: Int (accumulater)
+ 
+ */
+
+
+/*
+ 
+ given a two dimensional array, return the largest sum from an hour glass
+ 
+        1, 1, 1
+        0, 1, 0
+        1, 1, 1
+ 
+        sum = 7
+ ^ hour glass figure ^
+ 
+ [[-9, -9, -9,  1, 1, 1],
+  [ 0, -9,  0,  4, 3, 2],
+  [-9, -9, -9,  1, 2, 3],
+  [ 0,  0,  8,  6, 6, 0],
+  [ 0,  0,  0, -2, 0, 0],
+  [ 0,  0,  1,  2, 4, 0]]
+ 
+ 
+ python'''
+ 
+ def hourglass(matrix_in):
+     highest_sum = 0
+     for row in range(len(matrix_in) - 3):
+         for col in range(len(matrix_in[row]) - 3):
+             new_sum = matrix[row][col] + matrix[row][col + 1] + matrix[row][col + 2] + matrix [row + 1][col + 1]+ matrix[row + 2][col] + matrix[row + 2][col + 1] + matrix[row + 2][col + 2]
+         if(new_sum > highest_sum):
+             highest_sum = new_sum
+     return highest_sum
+ 
+ '''
+ 
+ */
+
+
+
+
+
