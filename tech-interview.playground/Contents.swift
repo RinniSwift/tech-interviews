@@ -9,8 +9,8 @@ import Foundation
 */
 
 // 1)
-let str1 = ["a", "b", "c", "f", "h", "w", "g", "k"]
-let str2 = ["c", "f", "d", "h", "w", "g", "k"]
+let str1 = ["a", "b", "c", "f", "h", "y"]
+let str2 = ["c", "f", "d", "h", "w"]
 
 func findLongestConsecutives(str1: [String], str2: [String]) -> [String] {
     var result = [(s: String, i: Int, j: Int)]()
@@ -48,7 +48,24 @@ func findSecondLargest(numbers: [Int]) -> Int {
 var listOfNumbers = [3, 4, 54, 12, 30]
 print(findSecondLargest(numbers: listOfNumbers))
 
-
+// ADDED: find second largest number without using the sort function
+func secondLargestNoSort(numbers: [Int]) -> Int {
+    var largests: (Int, Int)? = nil
+    
+    for num in numbers {
+        if largests == nil {
+            largests = (0, num)
+        } else if num > largests!.1 {
+            largests!.0 = largests!.1
+            largests!.1 = num
+        } else if num < largests!.1 && num > largests!.0 {
+            largests!.0 = num
+        }
+    }
+    
+    return largests!.0
+}
+secondLargestNoSort(numbers: [2,1,3,6,4,7,8])
 
 /* Nov.12.18
  
@@ -79,7 +96,6 @@ print(largestProduct(listInt: list))
 let duplicates = [3, 4, 77, 3, 77, 5, 6, 6, 4]
 func returnUnique(numbers: [Int]) -> [Int] {
     var uniqueNumbers = [Int]()
-//    var count = 0
     var frequencyDict = [Int:Int]()
     for i in numbers {
         if(frequencyDict.keys.contains(i)){
@@ -120,7 +136,31 @@ func pairs(nums: [Int], number: Int) -> [Int: Int] {
     }
     return pairs
 }
-pairs(nums: [4, 5, 9, 11, 2, 23, 44, 8, 1], number: 10)
+pairs(nums: [4, 5, 9, 11, 2, 23, 44, 8, 1, 5], number: 10)
+
+// 5.2) without a set
+func sumPairs(nums: [Int], number: Int) -> ((Int, Int))? {
+    
+    let sorted = nums.sorted()
+    var pairs = [Int:Int]()
+    
+    var i = 0
+    var j = sorted.count - 1
+    
+    while i < j {
+        let complement = nums[i] + nums[j]
+        if complement == number {
+            pairs[nums[i]] = nums[j]
+        } else if complement < number {
+            i += 1
+        } else if complement > number {
+            j -= 1
+        }
+    }
+    return nil
+}
+print(sumPairs(nums: [4, 5, 9, 11, 2, 23, 44, 8, 1, 5], number: 10))
+
 
 
 // 6)
@@ -274,7 +314,7 @@ func makeIterator(start: Int, iterate: Int, steps: Int) -> [Int] {
     var current = start
     numbers.append(start)
     
-    for i in 0...steps {
+    for _ in 0...steps {
         current += iterate
         numbers.append(current)
         
@@ -371,8 +411,7 @@ joinStrings(strings: ["happy", "me", "in", "a", "garden"])
  19) return the pairs of Ints that add up to k                                          * compelete
  20) find all the different ways a character array can be permutated                    * not complete
  21) compress strings with the number of repeated character count aabcddde -> a2bcd3e   * complete
- 22) check if string one is a subset of string two
- 23) check if the first string is a rotation of the second string
+ 22) check if string one is a subset of string two                                      * complete
  
  */
 
@@ -444,5 +483,7 @@ isSubstring(stringOne: "hi", stringTwo: "pp")
  extra credit: create a rubix cube game which should have all ones in a row and all zeros in a row
  
  */
+
+
 
 
