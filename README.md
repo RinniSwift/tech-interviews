@@ -69,6 +69,7 @@ we want to loop through all the items in the first array and see if that item is
 
 2. Given an array of numbers, return the second largest number
 
+2.1 used a tuple to store the highest two numbers and looped through the array to update the values.
 Sort the number array and index the item before the last in the sorted array.
 
 3. Given an array of ints, return the largest product of three numbers
