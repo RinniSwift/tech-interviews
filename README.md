@@ -1,5 +1,10 @@
 # Tech Interview
 
+## [romanNumbers.playground](https://github.com/RinniSwift/tech-interviews/tree/master/romanNumbers.playground)
+*LeetCode Medium*
+1. indexing strings
+2. return number representing roman numerals
+
 ## [Arrays.playground](https://github.com/RinniSwift/tech-interviews/blob/master/Arrays.playground/Contents.swift)
 *The above file demonstrates*
 1. return the highest product of 3 numbers from a given array
