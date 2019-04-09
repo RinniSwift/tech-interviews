@@ -1,9 +1,9 @@
 # Tech Interview
 
-## [romanNumbers.playground](https://github.com/RinniSwift/tech-interviews/tree/master/romanNumbers.playground)
-*LeetCode Medium*
-1. indexing strings
-2. return number representing roman numerals
+## LeetCode
+*Medium Questions*
+1. [romanNumbers.playground](https://github.com/RinniSwift/tech-interviews/tree/master/romanNumbers.playground)
+*involves indexing strings, returning numbers from roman numeral*
 
 ## [Arrays.playground](https://github.com/RinniSwift/tech-interviews/blob/master/Arrays.playground/Contents.swift)
 *The above file demonstrates*
