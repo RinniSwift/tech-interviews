@@ -47,7 +47,7 @@ func calculateLargestContainer(blocks: [Int]) -> Int {
     
     return product
 }
-print(calculateLargestContainer(blocks: [1, 3, 5, 6, 3, 7]))
+calculateLargestContainer(blocks: [1, 3, 5, 6, 3, 7])
 // edge case of the largest and the next largest number not creating the largest container
 // e.g. [1, 4, 3, 2, 3, 5, 7] -> 9
 //          ^           ^
@@ -94,9 +94,12 @@ func calcLargestContainerSize(arr: [Int]) -> Int {
                     largestSize = product
                 }
             }
+        } else {
+            right += 1
+            left += 1
         }
     }
     
     return largestSize
 }
-calcLargestContainerSize(arr: [7, 6, 4, 4, 6])
+calcLargestContainerSize(arr: [4, 3, 4, 4, 6, 7])
