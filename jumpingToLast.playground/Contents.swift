@@ -21,3 +21,26 @@ import UIKit
  jump length is 0, which makes it impossible to reach the last index.
  
  */
+
+func jumpingBlocks(arr: [Int]) -> Bool {
+    var setOfIndexes: Set<Int> = [0, 1]
+    
+    for (ind, num) in arr.enumerated() {
+        if setOfIndexes.contains(ind) {
+            for i in 0...num {
+                setOfIndexes.insert(i + ind)
+            }
+        }
+    }
+    
+    for num in setOfIndexes {
+        if num < arr.count {
+            if arr[num] + num >= arr.count - 1 {
+                return true
+            }
+        }
+    }
+    
+    return false
+}
+jumpingBlocks(arr: [1, 1, 2, 2, 0, 1, 0, 5])
