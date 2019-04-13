@@ -44,3 +44,9 @@ func jumpingBlocks(arr: [Int]) -> Bool {
     return false
 }
 jumpingBlocks(arr: [1, 1, 2, 2, 0, 1, 0, 5])
+
+/*
+ explanation:
+    add all possible indexes we can reach into a set.
+    loop through the set, if the arr at that index in the set + itself >= last index. we know we can reach the last index.
+ */
