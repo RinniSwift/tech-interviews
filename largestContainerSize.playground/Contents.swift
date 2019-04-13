@@ -102,4 +102,13 @@ func calcLargestContainerSize(arr: [Int]) -> Int {
     
     return largestSize
 }
-calcLargestContainerSize(arr: [4, 3, 4, 4, 6, 7])
+calcLargestContainerSize(arr: [4, 3, 4, 4, 6, 7, 9])
+
+/*
+ explanation:
+    start the left pointer at index 0 and right pointer at index 1
+    increase the pointers if the item to the right of the array is larger or equal (meaning we can still create a container since it will be higher
+    until the next item to the right is smaller, we calculate what we have and if it is larger than the largestContainer size, we update the variable
+    if we hit the next one which is smaller, we calculate what we have right now and then update the right pointer to be left + 1 and the left pointer to be left + 2 if it does not go out of bounds
+ 
+ */
