@@ -10,6 +10,8 @@
 *involves searching for the largest container from an array of blocks*
 4. [jumpingToLast.playground](https://github.com/RinniSwift/tech-interviews/blob/master/jumpingToLast.playground/Contents.swift)
 *return true if the items can jump to the last index*
+5. [firstToLastIndex.playground](https://github.com/RinniSwift/tech-interviews/blob/master/firstLastIndexOfTarget.playground/Contents.swift)
+*find start and last index that the target number occurred*
 ---
 *Easy Questions*
 1. [twoSum.playground](https://github.com/RinniSwift/tech-interviews/blob/master/twoSum.playground/Contents.swift)
