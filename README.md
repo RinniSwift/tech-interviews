@@ -18,6 +18,8 @@
 *return bool, indexes, all indexes, of two numbers that add up to the target number*
 2. [ransomNote.playground](https://github.com/RinniSwift/tech-interviews/blob/master/ransomNote.playground/Contents.swift)
 *return true if the second string can be created from the first string*
+3. [firstUniqueIndex.playground](https://github.com/RinniSwift/tech-interviews/blob/master/findFirstUniqueStrIndex.playground/Contents.swift)
+*returns the first index of a unique letter in a string*
 
 ## [Arrays.playground](https://github.com/RinniSwift/tech-interviews/blob/master/Arrays.playground/Contents.swift)
 *The above file demonstrates*
