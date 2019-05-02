@@ -20,7 +20,8 @@ import UIKit
 // if letter is not: APPEND letter: (count, index)
 
 
-
+let string1 = "leetcode"
+let string2 = "loveleetcode"
 
 
 func firstUniqueIndex(string: String) -> Int {
@@ -46,9 +47,33 @@ func firstUniqueIndex(string: String) -> Int {
             }
         }
     }
-    
     return smallestIndex
 }
 
-firstUniqueIndex(string: "aaaleetcode")
-// firstUniqueIndex(string: "loveleetcode")
+firstUniqueIndex(string: string1)
+firstUniqueIndex(string: string2)
+
+func firstUniqLetter(string: String) -> Int {
+    // create a histogram of (letter: freq)
+    // loop through the string, if the freq at that string is 1, return index
+    
+    var hist = [Character: Int]()
+    
+    for char in string {
+        if hist[char] != nil {
+            hist[char]! += 1
+        } else {
+            hist[char] = 1
+        }
+    }
+    
+    for (ind, char) in string.enumerated() {
+        if hist[char] == 1 {
+            return ind
+        }
+    }
+    
+    return -1
+    
+}
+firstUniqueIndex(string: string2)
