@@ -19,11 +19,15 @@ import UIKit
 // if letter is in the dictionary: DO NOTHING
 // if letter is not: APPEND letter: (count, index)
 
+
+
+
+
 func firstUniqueIndex(string: String) -> Int {
-    var dict = [Character: (Int, Int)]()
+    var dict = [Character: (Int, Int)]() //key: letter, (frequency, iundex)
     
     for (index, letter) in string.enumerated() {
-        if dict.keys.contains(letter) {
+        if dict[letter] != nil {
             // change the value to increment the count by 1 but same index
             let value = dict[letter]
             let newValue = (value!.0 + 1, value?.1)
@@ -45,5 +49,6 @@ func firstUniqueIndex(string: String) -> Int {
     
     return smallestIndex
 }
-firstUniqueIndex(string: "leetcode")
-firstUniqueIndex(string: "loveleetcode")
+
+firstUniqueIndex(string: "aaaleetcode")
+// firstUniqueIndex(string: "loveleetcode")
