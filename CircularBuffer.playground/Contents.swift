@@ -8,7 +8,7 @@ class CircularBuffer<T> {
     var elements = Array<T?>(repeating: nil, count: 8)
     
     var front: T? {
-        if self.isEmpty() {
+        if isEmpty() {
             return nil
         } else {
             return elements[bufferMaxSize - size]
@@ -39,16 +39,24 @@ class CircularBuffer<T> {
             }
             elements[bufferMaxSize - 1] = item
         }
-        size += 1
+        
+        if !isFull() {
+            size += 1
+        }
     }
     
-
+    func dequeue() -> T? {
+        // removes and returns item at front of buffer
+        if !isEmpty() {
+            for (ind,item) in elements.enumerated() {
+                if item != nil {
+                    elements[ind] = nil
+                    size -= 1
+                    return item
+                }
+            }
+        }
+        size -= 1
+        return nil
+    }
 }
-
-let circularBuffer = CircularBuffer<Int>(maxSize: 6)
-print(circularBuffer.elements)
-circularBuffer.enqueue(item: 4)
-print(circularBuffer.elements)
-circularBuffer.enqueue(item: 5)
-print(circularBuffer.elements)
-print(circularBuffer.front!)
