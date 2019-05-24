@@ -32,3 +32,23 @@ struct PrefixSequence: Sequence {
 for prefix in PrefixSequence(string: "hello") {
     print(prefix)
 }
+
+/*
+ Using sequence(first:next:)
+ and using sequence(state:next:)
+ */
+let randomNumbers = sequence(first: 100) { (previous: UInt32) in
+    let newValue = UInt32.random(in: 0...previous)
+    guard newValue > 0 else { return nil }
+    return newValue
+}
+Array(randomNumbers)
+
+let fibsSequence = sequence(state: (0, 1)) {
+    // compiler needs type inference help here
+    (state: inout(Int, Int)) -> Int? in
+    let upcomingNumber = state.0
+    state = (state.1, state.0 + state.1)
+    return upcomingNumber
+}
+Array(fibsSequence.prefix(10))
