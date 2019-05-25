@@ -60,7 +60,17 @@ extension FIFOQueue: Collection {
     }
 }
 
-var fifoQueue = FIFOQueue<Int>()
+extension FIFOQueue: ExpressibleByArrayLiteral {
+    typealias ArrayLiteralElement = T
+    
+    init(arrayLiteral elements: T...) {
+        self.init(left: elements.reversed(), right: [])
+    }
+}
 
-fifoQueue.enqueue(9)
-fifoQueue.enqueue(10)
+
+// initializing the struct
+var fifoQueue = FIFOQueue<Int>()
+var fifoQueueTwo = FIFOQueue<Int>(arrayLiteral: 1, 2, 3, 4)
+var fifoQueueThree: FIFOQueue<Int> = [1, 2, 3, 4]
+var fifoQueueFour: FIFOQueue = [1, 2, 3, 4]
