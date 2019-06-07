@@ -12,7 +12,7 @@
 5. [firstToLastIndex.playground](https://github.com/RinniSwift/tech-interviews/blob/master/firstLastIndexOfTarget.playground/Contents.swift)
 *find start and last index that the target number occurred*
 6. [longestSubstring.playground](https://github.com/RinniSwift/tech-interviews/blob/master/longestSubString.playground/Contents.swift)
-*find the longest length of a unique substring from a string.*
+*find the longest length of a unique substring from a string. [SPD]*
 
 ---
 
