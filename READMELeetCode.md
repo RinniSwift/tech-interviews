@@ -1,5 +1,11 @@
 ## LeetCode
 
+*Hard Questions*
+1. [medianOfTwoArrays.playground](https://github.com/RinniSwift/tech-interviews/blob/master/medianOfTwoArrays.playground/Contents.swift)
+*find the median of two sorted arrays combined together. [SPD]*
+
+---
+
 *Medium Questions*
 1. [romanNumbers.playground](https://github.com/RinniSwift/tech-interviews/blob/master/romanNumbers.playground/Contents.swift)
 *involves indexing strings, returning numbers from roman numeral*
