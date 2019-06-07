@@ -5,6 +5,14 @@
 func mergeNumber(arr: [Int], number: Int) -> [Int] {
     var mergedArr = arr
     
+    if number <= arr.first! {
+        mergedArr.insert(number, at: 0)
+        return mergedArr
+    } else  if number >= arr.last! {
+        mergedArr.append(number)
+        return mergedArr
+    }
+    
     var middle = arr.count / 2
     
     while middle > 0 || middle < arr.count {
@@ -25,7 +33,7 @@ func mergeNumber(arr: [Int], number: Int) -> [Int] {
                 continue
             }
             if number < arr[middle + 1] {
-                mergedArr.insert(number, at: middle)
+                mergedArr.insert(number, at: middle + 1)
                 break
             }
         } else if number == arr[middle] {
@@ -37,4 +45,4 @@ func mergeNumber(arr: [Int], number: Int) -> [Int] {
     return mergedArr
 }
 
-mergeNumber(arr: [1, 5, 6, 9], number: 6)
+mergeNumber(arr: [1, 5, 6, 9, 9, 10], number: 9)
