@@ -55,8 +55,10 @@ func mergeNumberBetter(arr: [Int], number: Int) -> [Int] {
     // check if less or greater than the bounds
     if number <= arr.first! {
         mergedArr.insert(number, at: 0)
+        return mergedArr
     } else if number >= arr.last! {
         mergedArr.append(number)
+        return mergedArr
     }
     
     while middle > 0 && middle < arr.count {
@@ -65,13 +67,22 @@ func mergeNumberBetter(arr: [Int], number: Int) -> [Int] {
             if number > arr[middle] {
                 mergedArr.insert(number, at: middle + 1)
                 break
+            } else if number == arr[middle] {
+                mergedArr.insert(number, at: middle)
+                break
             }
         } else if number > arr[middle] {
             middle = middle + (middle / 2)
             if number < arr[middle] {
                 mergedArr.insert(number, at: middle)
                 break
+            } else if number == arr[middle] {
+                mergedArr.insert(number, at: middle)
+                break
             }
+        } else if number == arr[middle] {
+            mergedArr.insert(number, at: middle)
+            break
         }
     }
     
