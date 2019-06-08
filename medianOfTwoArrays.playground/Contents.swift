@@ -117,4 +117,58 @@ func findMedianOfTwo(nums1: [Int], nums2: [Int]) -> Double? {
     }
 }
 
-findMedianOfTwo(nums1: [1, 2], nums2: [3, 4])
+//findMedianOfTwo(nums1: [1, 2], nums2: [3, 4])
+
+
+func combineTwoSortedArrays(arrOne: [Int], arrTwo: [Int]) -> [Int] {
+    var combined = [Int]()
+    
+    
+    if arrOne.count < arrTwo.count {
+        // loop over arrOne
+        combined = arrTwo
+        var middle = combined.count / 2
+        
+        
+        for number in arrOne {
+            
+            if number <= combined.first! {
+                combined.insert(number, at: 0)
+                continue
+            } else if number >= combined.last! {
+                combined.append(number)
+                continue
+            }
+            
+            while middle >= 0 && middle < combined.count {
+                print(number)
+                if number < combined[middle] {
+                    middle = middle / 2
+                    if number > combined[middle] {
+                        combined.insert(number, at: middle + 1)
+                        break
+                    }
+                } else if number > combined[middle] {
+                    if middle == middle + (middle / 2) {
+                        middle += 1
+                        continue
+                    }
+                    middle = middle + (middle / 2)
+                    
+                    
+                    if number < combined[middle] {
+                        combined.insert(number, at: middle)
+                        break
+                    }
+                } else if number == combined[middle] {
+                    combined.insert(number, at: middle)
+                    break
+                }
+            }
+        }
+    }
+    
+    return combined
+    
+}
+print(combineTwoSortedArrays(arrOne: [3, 4, 7], arrTwo: [1, 2, 4, 5, 7]))
