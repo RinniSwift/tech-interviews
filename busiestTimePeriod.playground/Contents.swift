@@ -123,31 +123,26 @@ findBusiestPeriod(data: data)
 
 
 
-
-
-
-
-
 func findBusiestPeriodPramp(data: [[Int]]) -> Int {
     
     var curLargestTime = data[0].first!
     var totalVisits = 0
-    var visitors = 0
+    var highestVisitors = 0
     
     for item in data {
         if item[2] == 1 {
             
             totalVisits += item[1]
-            if item[1] > visitors {
-                visitors = item[1]
+            if item[1] > highestVisitors {
+                highestVisitors = item[1]
                 curLargestTime = item[0]
             }
             
         } else {
             
             totalVisits -= item[1]
-            if totalVisits > visitors {
-                visitors = totalVisits
+            if totalVisits > highestVisitors {
+                highestVisitors = totalVisits
                 curLargestTime = item[0]
             }
             
@@ -246,6 +241,15 @@ busiestPeriod(data: data1)
 
 
 // FROM PRAMP PSUEDOCODE
+/*
+ psuedocode:
+ 
+ keep a variable for the current busiest amount of visitors, a variable for the busiest time, and a variable for the busiest amount of visitors.
+ 
+ loop through indexes
+ as looping through, check if it is 1 (indicating entering) and if is 1, increment the visitor count to the total visitors variable. If it is 0, decrement the count to the total visitors variable. Check the next index if it is the same time, if so, continue the task, if not, calculate and compare right away if the totalVisits is greater than visitors.
+ 
+ */
 
 func busiestTimePrampPsued(data: [[Int]]) -> Int {
     var totVisitors = 0
