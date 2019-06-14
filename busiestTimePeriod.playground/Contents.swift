@@ -243,3 +243,41 @@ func busiestPeriod(data: [[Int]]) -> Int {
     return busiestTime
 }
 busiestPeriod(data: data1)
+
+
+// FROM PRAMP PSUEDOCODE
+
+func busiestTimePrampPsued(data: [[Int]]) -> Int {
+    var totVisitors = 0
+    var highest = 0
+    var busiestTime = 0
+    
+    for i in 0..<data.count {
+        
+        if data[i][2] == 1 {
+            totVisitors += data[i][1]
+        } else {
+            totVisitors -= data[i][1]
+        }
+        
+        guard (i + 1) < data.count else {
+            if totVisitors > highest {
+                return data[i][0]
+            }
+            continue
+        }
+        
+        if data[i + 1][0] == data[i][0] {
+            continue
+        }
+        
+        if totVisitors > highest {
+            busiestTime = data[i][0]
+            highest = totVisitors
+        }
+        
+    }
+    
+    return busiestTime
+}
+busiestTimePrampPsued(data: data1)
