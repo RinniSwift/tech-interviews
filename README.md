@@ -35,6 +35,11 @@
 3. [firstUniqueIndex.playground](https://github.com/RinniSwift/tech-interviews/blob/master/findFirstUniqueStrIndex.playground/Contents.swift)
 *returns the first index of a unique letter in a string*
 
+
+## Algorithms
+1. [spellChecker.playground](https://github.com/RinniSwift/tech-interviews/blob/master/SpellChecker.playground/Contents.swift)
+*Using Damerau–Levenshtein distance to create a spell checker algorithm by removing, replacing, deleting, and transposing characters in a word.*
+
 ## [Arrays.playground](https://github.com/RinniSwift/tech-interviews/blob/master/Arrays.playground/Contents.swift)
 *The above file demonstrates*
 1. return the highest product of 3 numbers from a given array
