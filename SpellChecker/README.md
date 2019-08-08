@@ -1,5 +1,5 @@
 # Spell Checker Algorithm
-*Using the Damerau-Lavenshtein Distance to generate different possible corrections of a string*\
+*Using the Damerau-Lavenshtein Distance to generate different possible corrections of a string*
 
 File: [spellChecker.playground](https://github.com/RinniSwift/tech-interviews/blob/master/SpellChecker/SpellChecker.playground/Contents.swift)
 
@@ -52,5 +52,22 @@ func deletes(words: [(Substring, Substring)]) -> String?
 "swift" // will generate: "wift", "sift", "swft", "swit", "swif"
 ```
 
-*Function takes in the spitted words, remove them from each index, and returns one word that is found in the dictionary*\
+*Function takes in the splitted words, remove them from each index, and returns one word that is found in the dictionary*\
 Loop through each splitted pair, remove the first character out of the right splitted pair and add it to an array. Loop through the array, check it with the dictionary if it does contain, return with the corrected word.
+
+
+
+4. **Transposition**
+
+```swift
+func transpositions(words: [(Substring, Substring)]) -> String? { }
+```
+
+```swift
+// Samples
+"hello" // will generate: "ehllo", "hlelo", "hello", "helol"
+"swift" // will generate: "wsift", "siwft", "swfit", "switf"
+```
+
+*Function takes in the splitted words, swap places from every current index with the one next to it, and returns one word that is found in the dictionary*\
+Loop through each splitted pair, make sure the right splitted pair contains more than or equal to two characters, swap the first character in the right splitted index and swap it with the right splitted string at index 2, append the swapped strings into an array. Loop over the array and check in the dictionary. If it contains, return the string else return nil.
