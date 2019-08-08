@@ -2,6 +2,7 @@ import UIKit
 
 public let dictionary: Set<String> = Set(["cats", "cat", "halo", "hello", "hell"])
 public let vowels: Set<Character> = ["a", "e", "i", "o", "u"]
+public let consonants: Set<Character> = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z"]
 
 
 class SpellChecker {
@@ -22,6 +23,8 @@ class SpellChecker {
         guard replacedVowels == nil else { return replacedVowels }
         
         // replace letters with dif letters
+        let replacesConstants = replaceConsonants(words: splits)
+        guard replacesConstants == nil else { return replacesConstants }
         
         // delete/drop one character
         let deleteds = deletes(words: splits)
@@ -55,7 +58,7 @@ class SpellChecker {
             let rightHand = split.1
             
             if vowels.contains(rightHand.first!) {
-                // loop through all vowels and replace the first character of the righthand string
+                // loop through all vowels and replace the first character of the righthand string with another
                 for vowel in vowels {
                     let str = String(rightHand)
                     var repl = str.replacingCharacters(in: ...str.startIndex, with: String(vowel))
@@ -67,6 +70,28 @@ class SpellChecker {
             }
         }
         return nil
+    }
+    
+    private func replaceConsonants(splits: [(Substring, Substring)]) -> String? {
+        
+        for split in splits {
+            let leftHand = split.0
+            let rightHand = split.1
+            
+            if consonants.contains(rightHand.first!) {
+                // loop through all consonants and replace the first character of the righthand string with another
+                for cons in consonants {
+                    let str = String(rightHand)
+                    var repl = str.replacingCharacters(in: ...str.startIndex, with: String(cons))
+                    repl.insert(contentsOf: String(leftHand), at: repl.startIndex)
+                    if dictionary.contains(repl) {
+                        return repl
+                    }
+                }
+            }
+        }
+        return nil
+        
     }
     
     private func deletes(words: [(Substring, Substring)]) -> String? {
@@ -114,4 +139,3 @@ class SpellChecker {
 
 let checker = SpellChecker()
 checker.check(word: "helll")
-
