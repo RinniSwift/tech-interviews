@@ -31,12 +31,26 @@ func replaceVowels(splits: [(Substring, Substring)]) -> String? { }
 
 ```swift
 // Samples
-"hallo" -> Optional("hello")
-"calt" -> Optional("cult")
+"hallo" // will generate: "hello", "hillo", "hollo", ..., "halla", "halle", "halli"
+"calt" // will generate: "celt", "cilt", "colt", ...
 ```
 
 *Function takes in the splitted words and returns one word that is found in the dictionary.*\
 Loop through each splitted pair, if there is a character on the right side of the splitted pair, check if it is a vowel, if it is, loop through all the vowels and replace it with the existing vowel, each checking with the dictionary. If the word contains in the dictionary, return with the corrected word.
+
+
+```swift
+func replaceConsonants(splits: [(Substring, Substring)]) -> String? { }
+```
+
+```swift
+// Samples
+"hallo" // will generate: "bello", "cello", ..., "heblo", "heclo", ..., "helbo", "helco", ...
+"calt" // will generate: "balt", "malt", ..., "caft", "cart", ..., "calb", "calf", ...
+```
+
+*Function takes in the splitted words and returns one word that is found in the dictionary.*\
+Loop through each splitted pair, if there is a character on the right side of the splitted pair, check if it is a consonant, if it is, loop through all the consonants and replace it with the existing consonant, each checking with the dictionary. If the word contains in the dictionary, return with the corrected word.
 
 
 
