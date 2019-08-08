@@ -3,6 +3,26 @@
 
 File: [spellChecker.playground](https://github.com/RinniSwift/tech-interviews/blob/master/SpellChecker/SpellChecker.playground/Contents.swift)
 
+### This algorithm includes 3 steps
+1. Create global variables
+	1. `dictionary`: word in the dictionary contained in a set
+	2. `vowels`: all vowel characters contained in a set
+	3. `consonants`: all consonant characters contained in a set
+
+2. Create functions that will edit the incorrect word
+	1. `split`: split the word into two pieces to be a helper function for other functions
+	2. `replace`: replace 1 character in the string with different vowels or consonants
+	3. `delete`: delete 1 character from every index of the string
+	4. `transposition`: swap 2 neighbor characters at every index in the string
+
+3. Create a main function that will call the 3 functions. \
+The functions will return a string only if the edit was found in the dictionary. If it wasn't found across all operations, it will return nil. So we want to call functions in order of how we prioritize editing. I will be prioritizing edits with replacing vowels first, then replacing consonants, deleting a character, and finally transpositioning.
+
+> **Note**\
+> `replacingVowels` *and* `replacingConsonants` *are seperate functions because we want to prioritize mispelled words that are vowels before.*\
+> All functions are case sensitive. Functions are preferred lower cased.
+
+
 
 **Functions**
 
@@ -57,7 +77,7 @@ Loop through each splitted pair, if there is a character on the right side of th
 3. **Delete**
 
 ```swift
-func deletes(words: [(Substring, Substring)]) -> String?
+func deletes(words: [(Substring, Substring)]) -> String? { }
 ```
 
 ```swift
