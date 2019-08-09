@@ -1,8 +1,8 @@
 import UIKit
 
 public let dictionary: Set<String> = Set(["cats", "cat", "halo", "hello", "hell"])
-public let vowels: Set<Character> = ["a", "e", "i", "o", "u"]
-public let consonants: Set<Character> = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z"]
+public let vowels: Set<Character> = ["a", "e", "i", "o", "u"]  // count = v
+public let consonants: Set<Character> = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z"] // count = c
 
 
 class SpellChecker {
@@ -16,14 +16,14 @@ class SpellChecker {
             return word
         }
         
-        let splits = split(word)
+        let splits = split(word)  // count = w
         
         // replace vowels with different vowels
         let replacedVowels = replaceVowels(splits: splits)
         guard replacedVowels == nil else { return replacedVowels }
         
         // replace letters with dif letters
-        let replacesConstants = replaceConsonants(words: splits)
+        let replacesConstants = replaceConsonants(splits: splits)
         guard replacesConstants == nil else { return replacesConstants }
         
         // delete/drop one character
@@ -44,27 +44,27 @@ class SpellChecker {
     private func split(_ word: String) -> [(Substring, Substring)] {
         var allSplits = [(Substring, Substring)]()
         
-        for index in word.indices {
+        for index in word.indices { // O(w) iterations
             allSplits.append((word[..<index], word[index...]))
         }
         
         return allSplits
     }
     
+    
     private func replaceVowels(splits: [(Substring, Substring)]) -> String? {
         
-        for split in splits {
-            let leftHand = split.0
+        for split in splits { // O(w) iterations => O(w^2*v) overall
             let rightHand = split.1
             
-            if vowels.contains(rightHand.first!) {
-                // loop through all vowels and replace the first character of the righthand string with another
-                for vowel in vowels {
-                    let str = String(rightHand)
-                    var repl = str.replacingCharacters(in: ...str.startIndex, with: String(vowel))
-                    repl.insert(contentsOf: String(leftHand), at: repl.startIndex)
-                    if dictionary.contains(repl) {
-                        return repl
+            if vowels.contains(rightHand.first!) { // O(1)
+                for vowel in vowels { // O(v) iterations => O(v*w) overall
+                    var leftHand = split.0
+                    let replaced = rightHand.replacingCharacters(in: ...rightHand.startIndex, with: String(vowel))  // O(w)
+                    leftHand.append(contentsOf: replaced)
+                    print(leftHand)
+                    if dictionary.contains(String(leftHand)) { // O(1)
+                        return replaced
                     }
                 }
             }
@@ -72,15 +72,15 @@ class SpellChecker {
         return nil
     }
     
+    
     private func replaceConsonants(splits: [(Substring, Substring)]) -> String? {
         
         for split in splits {
             let leftHand = split.0
             let rightHand = split.1
             
-            if consonants.contains(rightHand.first!) {
-                // loop through all consonants and replace the first character of the righthand string with another
-                for cons in consonants {
+            if consonants.contains(rightHand.first!) {  // O(1)
+                for cons in consonants { // O(c)
                     let str = String(rightHand)
                     var repl = str.replacingCharacters(in: ...str.startIndex, with: String(cons))
                     repl.insert(contentsOf: String(leftHand), at: repl.startIndex)
@@ -93,6 +93,7 @@ class SpellChecker {
         return nil
         
     }
+    
     
     private func deletes(words: [(Substring, Substring)]) -> String? {
         
@@ -109,26 +110,26 @@ class SpellChecker {
         return nil
     }
     
+    
     private func transpositions(words: [(Substring, Substring)]) -> String? {
         
-        var allTransposotions = [String]()
-        
-        for split in words {
+        for split in words { // O(w) iterations => O(w^2???) overall
+            // ?
             guard split.1.count >= 2 else {
                 continue
             }
             
-            let firChar = split.1.first!
-            let secChar = split.1[split.1.index(split.1.startIndex, offsetBy: 1)]
-            
-            let rearanged = split.0 + Substring(String(secChar)) + Substring(String(firChar)) + split.1[split.1.index(split.1.startIndex, offsetBy: 2)...]
-            allTransposotions.append(String(rearanged))
-            
-        }
-        
-        for transpoWord in allTransposotions {
-            if dictionary.contains(transpoWord) {
-                return transpoWord
+            // ?
+            let firChar = split.1.first!  // O(1)
+            let secCharInd = split.1.index(split.1.startIndex, offsetBy: 1)  // O(w)??? -- need to look up
+            let secChar = split.1[secCharInd]  // O(1)
+            let swapped = Substring(String(secChar)) + Substring(String(firChar))
+
+            // ?
+            let thirdCharInd = split.1.index(split.1.startIndex, offsetBy: 2)  // O(w)???
+            let rearranged = split.0 + swapped + split.1[thirdCharInd...]  // O(?)
+            if dictionary.contains(String(rearranged)) {
+                return String(rearranged)
             }
             
         }
@@ -139,3 +140,4 @@ class SpellChecker {
 
 let checker = SpellChecker()
 checker.check(word: "helll")
+
