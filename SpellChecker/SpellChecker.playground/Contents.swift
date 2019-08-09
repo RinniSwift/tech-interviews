@@ -96,12 +96,12 @@ class SpellChecker {
     private func deletes(splits: [(Substring, Substring)]) -> String? {
         
         
-        for split in splits {  // O(w) iterations
+        for split in splits { // O(w) iterations => O(w)
             var leftHand = split.0
-            let rightHand = split.1.dropFirst()
+            let rightHand = split.1.dropFirst() // O(1)
             
             leftHand.append(contentsOf: String(rightHand))
-            if dictionary.contains(String(leftHand)) {
+            if dictionary.contains(String(leftHand)) { // O(1)
                 return String(leftHand)
             }
         }
@@ -138,35 +138,3 @@ class SpellChecker {
 
 let checker = SpellChecker()
 checker.check(word: "helll")
-
-
-
-
-
-
-
-
-
-func replaceConsonants(splits: [(Substring, Substring)]) -> String? {
-    
-    for split in splits {  // O(w) iterations => O(w^2*c)
-        let rightHand = split.1
-        
-        if consonants.contains(rightHand.first!) {  // O(1)
-            for cons in consonants { // O(c) iterations => O(c*w)
-                var leftHand = split.0
-                let replaced = rightHand.replacingCharacters(in: ...rightHand.startIndex, with: String(cons)) // O(w)
-                leftHand.append(contentsOf: replaced)
-                print(leftHand)
-                if dictionary.contains(String(leftHand)) {  // O(1)
-                    return String(leftHand)
-                }
-            }
-        }
-    }
-    return nil
-    
-}
-
-let splits: [(Substring, Substring)] = [("", "hello"), ("h", "ello"), ("he", "llo"), ("hel", "lo"), ("hell", "o")]
-replaceConsonants(splits: splits)
