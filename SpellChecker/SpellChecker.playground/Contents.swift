@@ -74,11 +74,11 @@ class SpellChecker {
     
     private func replaceConsonants(splits: [(Substring, Substring)]) -> String? {
         
-        for split in splits {  // O(w) iterations => O(w^2*c)
+        for split in splits {  // O(w) iterations => O(w^2*c) overall
             let rightHand = split.1
             
             if consonants.contains(rightHand.first!) {  // O(1)
-                for cons in consonants { // O(c) iterations => O(c*w)
+                for cons in consonants { // O(c) iterations => O(c*w) overall
                     var leftHand = split.0
                     let replaced = rightHand.replacingCharacters(in: ...rightHand.startIndex, with: String(cons)) // O(w)
                     leftHand.append(contentsOf: replaced)
@@ -96,7 +96,7 @@ class SpellChecker {
     private func deletes(splits: [(Substring, Substring)]) -> String? {
         
         
-        for split in splits { // O(w) iterations => O(w)
+        for split in splits { // O(w) iterations => O(w) overall
             var leftHand = split.0
             let rightHand = split.1.dropFirst() // O(1)
             
@@ -111,22 +111,25 @@ class SpellChecker {
     
     private func transpositions(words: [(Substring, Substring)]) -> String? {
         
-        for split in words { // O(w) iterations => O(w^2???) overall
-            // ?
-            guard split.1.count >= 2 else {
+        for split in words { // O(w) iterations => O(w) overall
+            let leftHand = split.0
+            let rightHand = split.1
+            
+            // right hand split must contain more than 2 characters to be swapped
+            guard rightHand.count >= 2 else {
                 continue
             }
             
-            // ?
-            let firChar = split.1.first!  // O(1)
-            let secCharInd = split.1.index(split.1.startIndex, offsetBy: 1)  // O(w)??? -- need to look up
+            // swapping first and second characters
+            let firChar = rightHand.first!  // O(1)
+            let secCharInd = rightHand.index(split.1.startIndex, offsetBy: 1)  // O(1)
             let secChar = split.1[secCharInd]  // O(1)
-            let swapped = Substring(String(secChar)) + Substring(String(firChar))
+            let swapped = Substring(String(secChar) + String(firChar))
 
-            // ?
-            let thirdCharInd = split.1.index(split.1.startIndex, offsetBy: 2)  // O(w)???
-            let rearranged = split.0 + swapped + split.1[thirdCharInd...]  // O(?)
-            if dictionary.contains(String(rearranged)) {
+            // combining all strings together
+            let thirdCharInd = rightHand.index(rightHand.startIndex, offsetBy: 2)  // O(1)
+            let rearranged = leftHand + swapped + rightHand[thirdCharInd...]
+            if dictionary.contains(String(rearranged)) {  // O(1)
                 return String(rearranged)
             }
             
