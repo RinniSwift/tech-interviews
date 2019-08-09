@@ -47,7 +47,6 @@ class SpellChecker {
         for index in word.indices { // O(w) iterations
             allSplits.append((word[..<index], word[index...]))
         }
-        
         return allSplits
     }
     
@@ -89,7 +88,6 @@ class SpellChecker {
             }
         }
         return nil
-        
     }
     
     
@@ -111,7 +109,7 @@ class SpellChecker {
     
     private func transpositions(words: [(Substring, Substring)]) -> String? {
         
-        for split in words { // O(w) iterations => O(w) overall
+        for split in words { // O(w) iterations => O(w*w) overall
             let leftHand = split.0
             let rightHand = split.1
             
@@ -124,17 +122,15 @@ class SpellChecker {
             let firChar = rightHand.first!  // O(1)
             let secCharInd = rightHand.index(split.1.startIndex, offsetBy: 1)  // O(1)
             let secChar = split.1[secCharInd]  // O(1)
-            let swapped = Substring(String(secChar) + String(firChar))
+            let swapped = Substring(String(secChar) + String(firChar))  // O(w)
 
             // combining all strings together
             let thirdCharInd = rightHand.index(rightHand.startIndex, offsetBy: 2)  // O(1)
-            let rearranged = leftHand + swapped + rightHand[thirdCharInd...]
+            let rearranged = leftHand + swapped + rightHand[thirdCharInd...]  // O(w)
             if dictionary.contains(String(rearranged)) {  // O(1)
                 return String(rearranged)
             }
-            
         }
-        
         return nil
     }
 }
