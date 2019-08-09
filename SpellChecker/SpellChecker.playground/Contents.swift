@@ -27,7 +27,7 @@ class SpellChecker {
         guard replacesConstants == nil else { return replacesConstants }
         
         // delete/drop one character
-        let deleteds = deletes(words: splits)
+        let deleteds = deletes(splits: splits)
         guard deleteds == nil else { return deleteds }
         
         // transpose 2 characters in the string
@@ -62,7 +62,6 @@ class SpellChecker {
                     var leftHand = split.0
                     let replaced = rightHand.replacingCharacters(in: ...rightHand.startIndex, with: String(vowel))  // O(w)
                     leftHand.append(contentsOf: replaced)
-                    print(leftHand)
                     if dictionary.contains(String(leftHand)) { // O(1)
                         return replaced
                     }
@@ -75,17 +74,16 @@ class SpellChecker {
     
     private func replaceConsonants(splits: [(Substring, Substring)]) -> String? {
         
-        for split in splits {
-            let leftHand = split.0
+        for split in splits {  // O(w) iterations => O(w^2*c)
             let rightHand = split.1
             
             if consonants.contains(rightHand.first!) {  // O(1)
-                for cons in consonants { // O(c)
-                    let str = String(rightHand)
-                    var repl = str.replacingCharacters(in: ...str.startIndex, with: String(cons))
-                    repl.insert(contentsOf: String(leftHand), at: repl.startIndex)
-                    if dictionary.contains(repl) {
-                        return repl
+                for cons in consonants { // O(c) iterations => O(c*w)
+                    var leftHand = split.0
+                    let replaced = rightHand.replacingCharacters(in: ...rightHand.startIndex, with: String(cons)) // O(w)
+                    leftHand.append(contentsOf: replaced)
+                    if dictionary.contains(String(leftHand)) {  // O(1)
+                        return String(leftHand)
                     }
                 }
             }
@@ -95,18 +93,18 @@ class SpellChecker {
     }
     
     
-    private func deletes(words: [(Substring, Substring)]) -> String? {
+    private func deletes(splits: [(Substring, Substring)]) -> String? {
         
-        let deletes = words.map {
-            $0.0 + $0.1.dropFirst()
-        }
         
-        for item in deletes {
-            if dictionary.contains(String(item)) {
-                return String(item)
+        for split in splits {  // O(w) iterations
+            var leftHand = split.0
+            let rightHand = split.1.dropFirst()
+            
+            leftHand.append(contentsOf: String(rightHand))
+            if dictionary.contains(String(leftHand)) {
+                return String(leftHand)
             }
         }
-        
         return nil
     }
     
@@ -141,3 +139,34 @@ class SpellChecker {
 let checker = SpellChecker()
 checker.check(word: "helll")
 
+
+
+
+
+
+
+
+
+func replaceConsonants(splits: [(Substring, Substring)]) -> String? {
+    
+    for split in splits {  // O(w) iterations => O(w^2*c)
+        let rightHand = split.1
+        
+        if consonants.contains(rightHand.first!) {  // O(1)
+            for cons in consonants { // O(c) iterations => O(c*w)
+                var leftHand = split.0
+                let replaced = rightHand.replacingCharacters(in: ...rightHand.startIndex, with: String(cons)) // O(w)
+                leftHand.append(contentsOf: replaced)
+                print(leftHand)
+                if dictionary.contains(String(leftHand)) {  // O(1)
+                    return String(leftHand)
+                }
+            }
+        }
+    }
+    return nil
+    
+}
+
+let splits: [(Substring, Substring)] = [("", "hello"), ("h", "ello"), ("he", "llo"), ("hel", "lo"), ("hell", "o")]
+replaceConsonants(splits: splits)
