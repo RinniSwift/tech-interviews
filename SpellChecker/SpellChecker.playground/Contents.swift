@@ -7,8 +7,6 @@ public let consonants: Set<Character> = ["b", "c", "d", "f", "g", "h", "j", "k",
 
 class SpellChecker {
     
-    let vowels: Set<Character> = ["a", "e", "i", "o", "u"]
-    
     func check(word: String) -> String? {
         // 1 edit distance
         
@@ -31,7 +29,7 @@ class SpellChecker {
         guard deleteds == nil else { return deleteds }
         
         // transpose 2 characters in the string
-        let transpos = transpositions(words: splits)
+        let transpos = transpositions(splits: splits)
         guard transpos == nil else { return transpos }
         
         // failed to create a correct word from 1 edit distance
@@ -107,7 +105,7 @@ class SpellChecker {
     }
     
     
-    private func transpositions(words: [(Substring, Substring)]) -> String? {
+    private func transpositions(splits: [(Substring, Substring)]) -> String? {
         
         for split in words { // O(w) iterations => O(w*w) overall
             let leftHand = split.0
