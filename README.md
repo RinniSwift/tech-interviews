@@ -40,7 +40,7 @@
 
 
 ## Algorithms
-1. [spellChecker.playground](https://github.com/RinniSwift/tech-interviews/blob/master/SpellChecker.playground/Contents.swift)
+1. [spellChecker.playground](https://github.com/RinniSwift/tech-interviews/tree/master/SpellChecker)
 *Using Damerau–Levenshtein distance to create a spell checker algorithm by removing, replacing, deleting, and transposing characters in a word.*
 
 ## [Arrays.playground](https://github.com/RinniSwift/tech-interviews/blob/master/Arrays.playground/Contents.swift)
