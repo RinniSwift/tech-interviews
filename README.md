@@ -34,6 +34,9 @@
 *return true if the second string can be created from the first string*
 3. [firstUniqueIndex.playground](https://github.com/RinniSwift/tech-interviews/blob/master/findFirstUniqueStrIndex.playground/Contents.swift)
 *returns the first index of a unique letter in a string*
+4. [groupAnagrams.playground](https://github.com/RinniSwift/tech-interviews/blob/master/groupAnagrams.playground/Contents.swift)
+*returns an array of arrays with each array containing all the same anagrams*
+
 
 
 ## Algorithms
