@@ -17,7 +17,6 @@
  
  . Can I assume the input string will always be lower cased? (no)
  . Can I assume to return the length of 0 if there are no characters in the string input? (yes)
- . Can I assume there will always be a substring since one character is a substring of the string
  . Assuming it will return 0 for inputs that are empty strings
  . Can I assume a substring can equal the full string input's length? (yes)
  
@@ -88,3 +87,46 @@ longestSubstring(string: "bbbbb")   // 1
 longestSubstring(string: "abcabcbb")   // 3
 
 
+longestSubstring(string: "dvdf")   // 3
+longestSubstring(string: "bbbbb")  // 1
+longestSubstring(string: "pwwkew")  // 3
+
+
+// second solution. Loop through the indexes, since we have to reverse back to the index that it has started at since found the repeated character.
+
+func lengthOfLongestSubstring(_ s: String) -> Int {
+        
+    var highestCount = 0
+    var currCount = 0
+    
+    var seenChar = Set<Character>()
+    var currInd = 0
+    
+    while currInd < s.count {
+        
+        let index = s.index(s.startIndex, offsetBy: currInd)
+        let character = s[index]
+        if seenChar.contains(character) {
+            
+            seenChar.removeAll()
+            currInd = (currInd - currCount) + 1
+            currCount = 0
+            
+        } else {
+            seenChar.insert(character)
+            currInd += 1
+            currCount += 1
+            if currCount > highestCount {
+                highestCount = currCount
+            }
+        }
+    }
+    
+    return highestCount
+}
+
+lengthOfLongestSubstring("pwwkew") // 3
+lengthOfLongestSubstring("bbbbb")  // 1
+lengthOfLongestSubstring(" ") // 1
+lengthOfLongestSubstring("") // 0
+lengthOfLongestSubstring("abcabcbb") // 3
