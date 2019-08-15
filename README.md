@@ -26,6 +26,10 @@
 *find start and last index that the target number occurred*
 6. [longestSubstring.playground](https://github.com/RinniSwift/tech-interviews/blob/master/longestSubString.playground/Contents.swift)
 *find the longest length of a unique substring from a string. [SPD]*
+7. [longestPalindrome.playground](https://github.com/RinniSwift/tech-interviews/blob/master/longestPalindrome.playground/Contents.swift)
+*find the longest palindrome from a string and return the palindrome*
+8. [rotateImage.playground]()
+*given a nXn 2D matrix, rotate the items in it clockwise once*
 ---
 *Easy Questions*
 1. [twoSum.playground](https://github.com/RinniSwift/tech-interviews/blob/master/twoSum.playground/Contents.swift)
