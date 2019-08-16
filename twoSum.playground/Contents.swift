@@ -1,13 +1,21 @@
 import UIKit
 
+
 /*
- Given an array of integers, return bool or indices of numbers that add up to the target.
+ 
+ Given an array of integers, return true if there are numbers that add up to the target.
  You may assume that each input would have exactly one solution, and you may not use the same element twice.
  
- Given nums = [2, 7, 11, 15], target = 9,
+ Given nums = [2, 7, 11, 15], target = 9
+ output: true
+ 
+ Clarifying Questions:
+    . can there contain negative numbers? -- yes
+    . can we use the same number twice? -- no
+    . if we don't find any pairs that add up do we just return false
+ 
  */
 
-// return bool if 2 numbers add up to the target
 func findTwoSum(arr: [Int], target: Int) -> Bool {
     
     var foundItems = Set<Int>()
@@ -15,51 +23,82 @@ func findTwoSum(arr: [Int], target: Int) -> Bool {
     for num in arr {
         if foundItems.contains(num) {
             return true
-        } else {
-            let complement = target - num
-            foundItems.insert(complement)
         }
+        let complement = target - num
+        foundItems.insert(complement)
     }
     return false
 }
-findTwoSum(arr: [1, 3, 5, 3], target: 8)
+findTwoSum(arr: [1, 5, -2, -2], target: -4)
 
 
-// return index of 2 numbers that add up to the target
-func findIndexesTwoSum(arr: [Int], target: Int) -> [Int] {
-    var indexes = [Int]()
-    var dict = [Int: (Int, Int)]()
+
+/*
+ 
+ Given an array of integers, return the 2 indexes such that both of the values add up to the target.
+ You may assume that each input would have exactly one solution, and you may not use the same element twice.
+ 
+ Given nums = [2, 7, 11, 15], target = 9
+ output: [0, 1]
+ 
+ Clarifying Questions:
+ . can there contain negative numbers? -- yes
+ . can we use the same number twice? -- no
+ . if we don't find any pairs that add up do we just return an empty array? -- return nil if there are no pairs that add up
+ 
+ */
+
+func findIndexesTwoSum(arr: [Int], target: Int) -> [Int]? {
     
-    for (index, number) in arr.enumerated() {
-        let complement = target - number
-        if dict.keys.contains(complement) {
-            indexes.append(dict[complement]!.0)
-            indexes.append(index)
-            return indexes
-        } else {
-            dict[number] = (index, complement)
+    // key: found number, value: number index
+    var numWithInd = [Int: Int]()
+    
+    for (ind, num) in arr.enumerated() {
+        let complement = target - num
+        if numWithInd[complement] != nil {
+            return [numWithInd[complement]!, ind]
         }
+        numWithInd[num] = ind
     }
     
-    return indexes
+    
+    return nil
+    
 }
-findIndexesTwoSum(arr: [8, 0], target: 8)
+findIndexesTwoSum(arr: [8, -2, -1, 2], target: -3)
 
-// returns all indexes of 2 numbers that add up to the target
+
+
+/*
+ 
+ Given an array of integers, return the all indexes in pairs such that the pairs values add up to the target.
+ 
+ Given nums = [2, 7, 11, 15], target = 9
+ output: [0, 1]
+ 
+ Clarifying Questions:
+ . can there contain negative numbers? -- yes
+ . can we use the same number twice? -- no
+ . if we don't find any pairs that add up do we just return an empty array? -- yes
+ 
+ */
+
 func findAllIndexes(arr: [Int], target: Int) -> [(Int, Int)] {
-    var allIndexes = [(Int, Int)]()
-    var dict = [Int: Int]()
     
-    for (ind, number) in arr.enumerated() {
-        let complement = target - number
-        if dict.keys.contains(complement) {
-            allIndexes.append((dict[complement]!, ind))
-        } else {
-            dict[number] = ind
+    var resultArr = [(Int, Int)]()
+    var numWithInd = [Int: Int]()
+    
+    for (ind, num) in arr.enumerated() {
+        
+        let complement = target - num
+        
+        if numWithInd[complement] != nil {
+            resultArr.append((ind, numWithInd[complement]!))
         }
+        numWithInd[num] = ind
     }
     
-    return allIndexes
-    
+    return resultArr
 }
-print(findAllIndexes(arr: [1, 2, 4, 3, 8, 0, 6, -2], target: 6))
+findAllIndexes(arr: [1, 2, 4, 3, -2, 0, 6, 8, 4], target: 6)
+
