@@ -24,7 +24,7 @@ func rotateToRight(arr: [Int], k: Int) -> [Int] {
     let last = arr.dropFirst(arr.count - k)
     return Array(last + first)
 }
-rotateToRight(arr: [1,2,3,4,5,6,7], k: 3)
+//rotateToRight(arr: [1,2,3,4,5,6,7], k: 3)
 
 func rotateRight(arr: inout [Int], k: Int) -> [Int] {
     for _ in 0..<k {
@@ -49,7 +49,7 @@ func returnSimilarities(arrOne: [Int], arrTwo: [Int]) -> [Int] {
     }
     return Array(resultArr)
 }
-returnSimilarities(arrOne: [1, 2, 3, 7, 7], arrTwo: [2, 7, 4, 5])
+//returnSimilarities(arrOne: [1, 2, 3, 7, 7], arrTwo: [2, 7, 4, 5])
 
 
 
@@ -99,7 +99,7 @@ func intersection(arrOne: [Int], arrTwo: inout [Int]) -> [Int] {
     
 }
 var this = [1, 4, 3, 5, 6, 7]
-intersection(arrOne: [1, 2, 3, 4, 3, 4, 3], arrTwo: &this)
+//intersection(arrOne: [1, 2, 3, 4, 3, 4, 3], arrTwo: &this)
 
 
 /*
@@ -188,7 +188,7 @@ func changeZeros(_ matrix: inout [[Int]], _ i: Int, _ j: Int) {
 var grid1 = [[0, 0, 1],
              [1, 0, 0],
              [1, 1, 0]]
-checkValidPath(matrix: &grid1)
+//checkValidPath(matrix: &grid1)
 
 
 
@@ -214,7 +214,7 @@ func twoSums(arr: [Int], k: Int) -> [Int] {
     
     return resultArr
 }
-twoSums(arr: [1, 4, 7, 5], k: 9)
+//twoSums(arr: [1, 4, 7, 5], k: 9)
 
 
 
@@ -264,7 +264,7 @@ func returnDupl(one: [Int], two: [Int]) -> [Int] {
     
     return Array(res)
 }
-returnDupl(one: [1, 2, 3, 4, 5, 5, 6, 2, 1], two: [5, 3, 6, 7, 8, 5])
+//returnDupl(one: [1, 2, 3, 4, 5, 5, 6, 2, 1], two: [5, 3, 6, 7, 8, 5])
 
 
 
@@ -350,9 +350,9 @@ func reverseOrder(stringInArr: [Character]) -> [Character] {
     let joined = wordArr.joined(separator: " ")
     return Array(joined)
 }
-reverseOrder(stringInArr: [ "p", "e", "r", "f", "e", "c", "t", " ",
-                            "m", "a", "k", "e", "s", " ",
-                            "p", "r", "a", "c", "t", "i", "c", "e" ])
+//reverseOrder(stringInArr: [ "p", "e", "r", "f", "e", "c", "t", " ",
+//                            "m", "a", "k", "e", "s", " ",
+//                            "p", "r", "a", "c", "t", "i", "c", "e" ])
 
 
 /*
@@ -378,7 +378,7 @@ func returnPeaks(arr: [Int]) -> Int {
     
     return 0
 }
-returnPeaks(arr: [2, 3, 20, 7, 30, 40, 90, 50])
+//returnPeaks(arr: [2, 3, 20, 7, 30, 40, 90, 50])
 
 
 
@@ -393,9 +393,61 @@ returnPeaks(arr: [2, 3, 20, 7, 30, 40, 90, 50])
   [4, 8, 2],
   [2, 5, 3]]    max path would be (1, 2, 30, 2, 3) = 38
  
+ [[1, 5, 3],
+  [4, 5, 9],
+  [7, 8, 9]]    max path would be (1, 5, 5, 9, 9) = 29
+ 
  return type: Int (accumulater)
  
  */
+func sumOfWalkedArr(arr: [[Int]]) -> Int {
+    
+    let columns = arr[0].count - 1
+    let rows = arr.count
+    
+    var sum = 0
+    var startIndexes = (0, 0)
+    sum += arr[startIndexes.0][startIndexes.1]
+    
+    while startIndexes.0 < rows {
+        
+        if startIndexes.1 + 1 > columns {
+            // can only go down, not right
+            startIndexes.0 += 1
+            sum += arr[startIndexes.0][startIndexes.1]
+        } else {
+            
+            if arr[startIndexes.0 + 1][startIndexes.1] >= arr[startIndexes.0][startIndexes.1 + 1] {
+                // down position is greater than right position
+                startIndexes.0 += 1
+                sum += arr[startIndexes.0][startIndexes.1]
+        
+            } else {
+                // right position is greater than down position
+                startIndexes.1 += 1
+                sum += arr[startIndexes.0][startIndexes.1]
+            }
+        }
+        
+        // handle if it hits the bottom of the matrix by appending all the other left elements
+        if startIndexes.0 + 1 == rows {
+            if startIndexes.1 + 1 < columns {
+                for otherItem in arr[startIndexes.0][(startIndexes.1 + 1)...] {
+                    sum += otherItem
+                }
+            }
+            
+            return sum
+        }
+    }
+    
+    return sum
+}
+
+// solution chooses the best local choice but not the best global choice.
+sumOfWalkedArr(arr: [[1, 5, 3],
+                     [4, 5, 9],
+                     [7, 8, 9]])
 
 
 /*
