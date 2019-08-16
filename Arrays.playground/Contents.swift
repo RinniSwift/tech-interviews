@@ -486,5 +486,36 @@ sumOfWalkedArr(arr: [[1, 5, 3],
 
 
 
+/*
+ Given an array, find a most frequent / highest occurence element in an array
+ 
+ [1, 3, 5, 4, 5, 4, 6, 5, 7, 6] -> 5
+ 
+ Clarifying questions:
+    . If there is more than one number that has the highest frequency, can we just return a random number? -- yes, return any highest frequency number
+    . I'm assuming there can be negative numbers? -- yes
+ 
+ */
 
+func countHighestOcc(arr: [Int]) -> Int {
+    
+    var histogram = [Int: Int]()
+    var highestVal = (arr[0], 1)
+    
+    for num in arr {
+        if histogram[num] != nil {
+            histogram[num]! += 1
+            
+            if histogram[num]! > highestVal.1 {
+                highestVal = (num, histogram[num]!)
+            }
+            
+        } else {
+            histogram[num] = 1
+        }
+    }
+    
+    return highestVal.0
+}
+countHighestOcc(arr: [1, 3, 5, 4, 5, 4, 6, 5, 7, 6])
 
