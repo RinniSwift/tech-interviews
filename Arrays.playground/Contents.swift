@@ -546,17 +546,17 @@ func countOcc(arr: [Int], n: Int) -> Int {
             rightInd = median
             leftInd = median
             
-            while arr[leftInd - 1] == n {
+            while rightInd < arr.count {
+                guard arr[rightInd] == n else { break }
                 count += 1
-                guard leftInd > 0 else { break }
-                leftInd -= 1
-            }
-            while arr[rightInd] == n {
-                count += 1
-                guard rightInd < arr.count - 1  else { break }
                 rightInd += 1
             }
-            return count
+            while leftInd >= 0 {
+                guard arr[leftInd] == n else { break }
+                count += 1
+                leftInd -= 1
+            }
+            return count - 1
             
         } else {
             if n < arr[median] {
@@ -569,8 +569,6 @@ func countOcc(arr: [Int], n: Int) -> Int {
         }
     }
     
-    
-
     return 0
 }
-countOcc(arr: [-1, -1, 2, 2, 2, 3, 4, 5, 5, 5, 5, 7, 10], n: 5)
+countOcc(arr: [-1, -1, 2, 2, 2, 3, 4, 5, 5, 5, 5, 7, 10], n: -1)
