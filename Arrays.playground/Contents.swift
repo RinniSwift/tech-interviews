@@ -445,9 +445,9 @@ func sumOfWalkedArr(arr: [[Int]]) -> Int {
 }
 
 // solution chooses the best local choice but not the best global choice.
-sumOfWalkedArr(arr: [[1, 5, 3],
-                     [4, 5, 9],
-                     [7, 8, 9]])
+//sumOfWalkedArr(arr: [[1, 5, 3],
+//                     [4, 5, 9],
+//                     [7, 8, 9]])
 
 
 /*
@@ -517,5 +517,60 @@ func countHighestOcc(arr: [Int]) -> Int {
     
     return highestVal.0
 }
-countHighestOcc(arr: [1, 3, 5, 4, 5, 4, 6, 5, 7, 6])
+//countHighestOcc(arr: [1, 3, 5, 4, 5, 4, 6, 5, 7, 6])
 
+
+
+/*
+ Given a sorted array and n, find the occurences n has appeared in the sorted array
+ 
+ [-1, -1, 2, 2, 2, 3, 4, 5, 5, 5, 5, 7, 10] , n: 5  -> 4
+ 
+ Clarifying questions:
+ . Can there contain negative numbers? -- yes . That means n can also be a negative number -- yes
+ . If there are no numbers found, do we just return 0? -- yes
+ 
+ */
+
+func countOcc(arr: [Int], n: Int) -> Int {
+    
+    var median = arr.count / 2
+    var count = 0
+    
+    var rightInd = 0
+    var leftInd = 0
+    
+    while median < arr.count && median >= 0 {
+        if arr[median] == n {
+            // start counting both ways
+            rightInd = median
+            leftInd = median
+            
+            while arr[leftInd - 1] == n {
+                count += 1
+                guard leftInd > 0 else { break }
+                leftInd -= 1
+            }
+            while arr[rightInd] == n {
+                count += 1
+                guard rightInd < arr.count - 1  else { break }
+                rightInd += 1
+            }
+            return count
+            
+        } else {
+            if n < arr[median] {
+                // shift left
+                median = median / 2
+            } else {
+                // shift right
+                median = median + (median / 2)
+            }
+        }
+    }
+    
+    
+
+    return 0
+}
+countOcc(arr: [-1, -1, 2, 2, 2, 3, 4, 5, 5, 5, 5, 7, 10], n: 5)
