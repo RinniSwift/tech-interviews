@@ -28,7 +28,7 @@
 *find the longest length of a unique substring from a string. [SPD]*
 7. [longestPalindrome.playground](https://github.com/RinniSwift/tech-interviews/blob/master/longestPalindrome.playground/Contents.swift)
 *find the longest palindrome from a string and return the palindrome*
-8. [rotateImage.playground]()
+8. [rotateImage.playground](https://github.com/RinniSwift/tech-interviews/blob/master/rotateImage.playground/Contents.swift)
 *given a nXn 2D matrix, rotate the items in it clockwise once*
 ---
 *Easy Questions*
@@ -61,6 +61,8 @@
 10. given an array of duplicates, return only the numbers once
 11. reverse the array that contains characters that form a sentence.
 12. given an array of numbers, return the peak.
+13. given a matrix, start from the top left and walk through the matrix to return the largest sum. Where you can only travel right and down.
+14. given an array of integers, return the integer that has been most frequently found in the array
 
 ## [Tech-Interview-New.playground](https://github.com/RinniSwift/tech-interviews/blob/master/Tech-Interview-New.playground/Contents.swift)
 *The above file demonstrates:*
