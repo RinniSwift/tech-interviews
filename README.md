@@ -30,6 +30,8 @@
 *find the longest palindrome from a string and return the palindrome*
 8. [rotateImage.playground](https://github.com/RinniSwift/tech-interviews/blob/master/rotateImage.playground/Contents.swift)
 *given a nXn 2D matrix, rotate the items in it clockwise once*
+4. [groupAnagrams.playground](https://github.com/RinniSwift/tech-interviews/blob/master/groupAnagrams.playground/Contents.swift)
+*returns an array of arrays with each array containing all the same anagrams*
 ---
 *Easy Questions*
 1. [twoSum.playground](https://github.com/RinniSwift/tech-interviews/blob/master/twoSum.playground/Contents.swift)
@@ -38,8 +40,6 @@
 *return true if the second string can be created from the first string*
 3. [firstUniqueIndex.playground](https://github.com/RinniSwift/tech-interviews/blob/master/findFirstUniqueStrIndex.playground/Contents.swift)
 *returns the first index of a unique letter in a string*
-4. [groupAnagrams.playground](https://github.com/RinniSwift/tech-interviews/blob/master/groupAnagrams.playground/Contents.swift)
-*returns an array of arrays with each array containing all the same anagrams*
 
 
 
@@ -64,6 +64,14 @@
 13. given a matrix, start from the top left and walk through the matrix to return the largest sum. Where you can only travel right and down.
 14. given an array of integers, return the integer that has been most frequently found in the array
 15. given a sorted array of ints and a number n, find the occurrence n has appeared in the sorted array.
+
+
+## [Strings.playground](https://github.com/RinniSwift/tech-interviews/blob/master/Strings.playground/Contents.swift)
+*The above file demonstrates*
+1. given a string S and a string T, find the minimum window in S which will contain all the characters in T
+2. sample closure functions
+3. given a string S and a string T, return the string T if it contains in the string S
+4. given a string, return the encoded string (compressed string)
 
 ## [Tech-Interview-New.playground](https://github.com/RinniSwift/tech-interviews/blob/master/Tech-Interview-New.playground/Contents.swift)
 *The above file demonstrates:*
