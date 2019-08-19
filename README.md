@@ -66,12 +66,12 @@
 15. given a sorted array of ints and a number n, find the occurrence n has appeared in the sorted array.
 
 
-## [Strings.playground](https://github.com/RinniSwift/tech-interviews/blob/master/Strings.playground/Contents.swift)
-*The above file demonstrates*
-1. given a string S and a string T, find the minimum window in S which will contain all the characters in T
-2. sample closure functions
-3. given a string S and a string T, return the string T if it contains in the string S
-4. given a string, return the encoded string (compressed string)
+## [Strings.playground](https://github.com/RinniSwift/tech-interviews/tree/master/Strings.playground/Pages)
+1. [findMinimumWindow.playground](https://github.com/RinniSwift/tech-interviews/blob/master/Strings.playground/Pages/findMinimumWindow.xcplaygroundpage/Contents.swift)
+*given a string S and a string T, find the minimum window in S which will contain all the characters in T*
+2. [encodeString.playground](https://github.com/RinniSwift/tech-interviews/blob/master/Strings.playground/Pages/encodeString.xcplaygroundpage/Contents.swift)
+*given a string, return the encoded string (compressed string)*
+
 
 ## [Tech-Interview-New.playground](https://github.com/RinniSwift/tech-interviews/blob/master/Tech-Interview-New.playground/Contents.swift)
 *The above file demonstrates:*
