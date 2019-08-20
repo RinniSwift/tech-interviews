@@ -48,4 +48,40 @@ func encodeString(str: String) -> String {
 encodeString(str: "aaabbcccc")
 
 
+
+// Higher Order Function
+
+func compressString(str: String) -> String {
+    
+    guard !str.isEmpty else { return "" }
+    
+    var currChar: Character = str.first!
+    var currCount = 0
+
+    let cmprStr = str.reduce(String(currChar)) { (result, char) in
+        
+        if char == currChar {
+            currCount += 1
+            return result
+        } else {
+            let prevCount = currCount
+            
+            if currCount == 1 {
+                currChar = char
+                return result
+            } else {
+                currCount = 1
+                currChar = char
+                
+                return result + String(prevCount) + String(char)
+            }
+        }
+    }
+    
+    guard currCount != 1 else { return cmprStr }
+    return cmprStr + String(currCount)
+}
+compressString(str: "aaabbccc")
+
+
 //: [Next](@next)
