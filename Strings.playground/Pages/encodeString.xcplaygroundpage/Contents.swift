@@ -83,4 +83,40 @@ func compressStringHOF(str: String) -> String {
 }
 compressStringHOF(str: "aaabbccc")
 
+
+// Iterative
+
+func compressString(str: String) -> String {
+    
+    guard !str.isEmpty else { return "" }
+    
+    var currChar: Character = str.first!
+    var currCount = 0
+    var compressedStr: String = "\(currChar)"
+    
+    
+    for char in str {
+        
+        if char == currChar {
+            currCount += 1
+            
+        } else {
+            guard currCount != 1 else { compressedStr += String(char); currChar = char; continue }
+            compressedStr += (String(currCount) + String(char))
+            currCount = 1
+            currChar = char
+        }
+    }
+    
+    guard currCount != 1 else { return compressedStr }
+    compressedStr += String(currCount)
+    return compressedStr
+
+}
+compressString(str: "abbbbccc")
+
+
+
+
+
 //: [Next](@next)
