@@ -51,7 +51,7 @@ encodeString(str: "aaabbcccc")
 
 // Higher Order Function
 
-func compressString(str: String) -> String {
+func compressStringHOF(str: String) -> String {
     
     guard !str.isEmpty else { return "" }
     
@@ -68,7 +68,7 @@ func compressString(str: String) -> String {
             
             if currCount == 1 {
                 currChar = char
-                return result
+                return result + String(char)
             } else {
                 currCount = 1
                 currChar = char
@@ -81,7 +81,6 @@ func compressString(str: String) -> String {
     guard currCount != 1 else { return cmprStr }
     return cmprStr + String(currCount)
 }
-compressString(str: "aaabbccc")
-
+compressStringHOF(str: "aaabbccc")
 
 //: [Next](@next)
